@@ -50,7 +50,7 @@ AK47:
             - PlaySound(AK-47_close,1,1)
     Grenade_Launcher:
       LoadOut_Information:
-        Name: 'Regular Ammo'
+        Name: 'Grenade Launcher'
         Description: 
         - 'When selected, you can use the grenade launcher, but cant use scope'
         Type: ammo
@@ -64,7 +64,7 @@ AK47:
           Duration: 40
           Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
       Requirements:
-        - Required_Item(AK-47_Bullet) #if player does not have this attachment then this will not be shown in the hotbar
+        - Required_Item(AK-47_Grenade_Launcher) #if player does not have this attachment then this will not be shown in the hotbar
       Events:
         OnRightClick:
           SelfActions:
