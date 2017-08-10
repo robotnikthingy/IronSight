@@ -45,3 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# IDE files and folders
+/bin/
+/.settings/
+/docs/
+/.idea/
+.project
+.classpath
