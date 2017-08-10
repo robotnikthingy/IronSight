@@ -6,10 +6,6 @@ AK47:
     Item_Lore:
     - "Lore Goes Here"
     Weapon_Type: weapon #can be set to disposable if one time use
-  # Loadout_Menu:
-    # - Ammo(AK-47_Bullet)
-    # - Ammo(Grenade_Launcher)
-    # - Ability(Sprint)
   LoadOuts:
     AK-47_Bullet:
       Information:
