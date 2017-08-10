@@ -13,7 +13,7 @@ AK47:
         Description: 
         - 'When selected, you can fire regular AK-47 ammo and use the scope'
         Type: ammo
-        Slot: 0
+        Slot: 0 #the slot in the hotbar this will appear in
       Options:
         Ammo_Item: AK-47_Bullet
         Ammo_Capacity: 1
@@ -64,7 +64,8 @@ AK47:
           Duration: 40
           Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
       Requirements:
-        - Required_Item(AK-47_Grenade_Launcher) #if player does not have this attachment then this will not be shown in the hotbar
+        Required_Item:
+        - AK-47_Grenade_Launcher #if player does not have this attachment then this will not be shown in the hotbar
       Events:
         OnRightClick:
           SelfActions:
@@ -72,7 +73,7 @@ AK47:
             - ParticleEffect(SMOKE)
             - PlaySound(AK-47_grenade_sound,1,1)
           Requirements:
-            - Required_Item(AK-47_Grenade)
+            Requires_Ammo: true
           Options:
             Cancel_Interactions: true
             Ammo_Per_action: 1
@@ -93,7 +94,7 @@ AK47:
       Events:
         OnSelect:
           SelfActions:
-          - PotionEffect(SPEED,1,10)
+          - PotionEffect(SPEED,1,200) #applies Speed 1 potion effect for 200 ticks (10 Seconds)
           
 Bazooka:
   Item_Information:
@@ -110,7 +111,7 @@ Bazooka:
         Description: 
         - 'When selected, you can fire High Explosive ammo from the Bazooka'
         Type: ammo
-        Slot: 0
+        Slot: 0  #the slot in the hotbar this will appear in
       Options:
         Ammo_Item: High_Explosive_Rocket
         Ammo_Capacity: 1
@@ -174,7 +175,7 @@ Bazooka:
         Description: 
         - 'Temporarly increases speed for 10 seconds'
         Type: ability
-        Slot: 1
+        Slot: 2
       Options:
         Cooldown: 500
       Events:
