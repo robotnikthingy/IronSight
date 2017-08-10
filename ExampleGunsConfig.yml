@@ -1,0 +1,187 @@
+AK47:
+  Item_Information:
+    Item_Name: "&cAK-47"
+    Item_Type: 291
+    Data: 1
+    Item_Lore:
+    - "Lore Goes Here"
+    Weapon_Type: weapon #can be set to disposable if one time use
+  # Loadout_Menu:
+    # - Ammo(AK-47_Bullet)
+    # - Ammo(Grenade_Launcher)
+    # - Ability(Sprint)
+  LoadOuts:
+    AK-47_Bullet:
+      Information:
+        Name: 'Regular Ammo'
+        Description: 
+        - 'When selected, you can fire regular AK-47 ammo and use the scope'
+        Type: ammo
+        Slot: 0
+      Options:
+        Ammo_Item: AK-47_Bullet
+        Ammo_Capacity: 1
+        Infinite_Ammo: false
+        Cooldown: 10 #how long until this option can be choosen again
+        Reload:
+          Duration: 40
+          Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
+          Reload_On_Switch: false
+      Events:
+        OnRightClickHold:
+          SelfActions:
+            - Fire_Projectile(AK-47_Projectile)
+            - ParticleEffect(SMOKE)
+            - PlaySound(AK-47_sound,1,1)
+          Options:
+            Delay_Between_Actions: 3 #this will limit the rate of fire
+            Cancel_Interactions: true #cancel interaction with blocks when held
+            Ammo_Per_action: 1
+          Requirements:
+            Requires_Ammo: true
+        OnLeftClick:
+          SelfActions:
+            - Zoom(5)
+          Options:
+            Cooldown: 10
+          Requirements:
+            Required_Attachments:
+              - Scope
+        OnReload:
+          SelfActions:
+            - PlaySound(AK-47_open,1,1)
+            - delay(100) #causes a 100 tick delay before the next action in the list happens
+            - PlaySound(AK-47_close,1,1)
+    Grenade_Launcher:
+      LoadOut_Information:
+        Name: 'Regular Ammo'
+        Description: 
+        - 'When selected, you can use the grenade launcher, but cant use scope'
+        Type: ammo
+        Slot: 1
+      Options:
+        Ammo_Item: AK-47_Grenade
+        Ammo_Capacity: 1
+        Infinite_Ammo: false
+        Cooldown: 10 #how long until this option can be choosen again
+        Reload:
+          Duration: 40
+          Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
+      Requirements:
+        - Required_Item(AK-47_Bullet) #if player does not have this attachment then this will not be shown in the hotbar
+      Events:
+        OnRightClick:
+          SelfActions:
+            - Fire_Projectile(AK-47_Grenade_Projectile)
+            - ParticleEffect(SMOKE)
+            - PlaySound(AK-47_grenade_sound,1,1)
+          Requirements:
+            - Required_Item(AK-47_Grenade)
+          Options:
+            Cancel_Interactions: true
+            Ammo_Per_action: 1
+        OnReload:
+          SelfActions:
+            - PlaySound(AK-47_open,1,1)
+            - delay(60)
+            - PlaySound(AK-47_close,1,1)
+    Sprint:
+      LoadOut_Information:
+        Name: 'Sprint'
+        Description: 
+        - 'Temporarly increases speed for 10 seconds'
+        Type: ability
+        Slot: 1
+      Options:
+        Cooldown: 300
+      Events:
+        OnSelect:
+          SelfActions:
+          - PotionEffect(SPEED,1,10)
+          
+Bazooka:
+  Item_Information:
+    Item_Name: "&cBazooka"
+    Item_Type: 291
+    Data: 2
+    Item_Lore:
+    - "Lore Goes Here"
+    Weapon_Type: weapon #can be set to disposable if one time use
+  LoadOuts:
+    HighExplosiveRocket:
+      Information:
+        Name: 'High Explosive Ammo'
+        Description: 
+        - 'When selected, you can fire High Explosive ammo from the Bazooka'
+        Type: ammo
+        Slot: 0
+      Options:
+        Ammo_Item: High_Explosive_Rocket
+        Ammo_Capacity: 1
+        Infinite_Ammo: false
+        Cooldown: 10 #how long until this option can be choosen again in the loadout bar
+        Reload:
+          Duration: 100
+          Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
+          Reload_On_Switch: true #When switched to this loadout, weapon will need to be reloaded
+      Events:
+        OnRightClick:
+          SelfActions:
+            - Fire_Projectile(HE_Rocket_Projectile)
+            - ParticleEffect(SMOKE)
+            - PlaySound(Bazooka_Fire_sound,1,1)
+          Options:
+            Cancel_Interactions: true
+            Ammo_Per_action: 1
+          Requirements:
+            Requires_Ammo: true
+        OnReload:
+          SelfActions:
+            - PlaySound(Bazooka_Load,1,1)
+            - delay(100)
+            - PlaySound(Bazooka_Ready,1,1)
+    ArmorPiercingRocket:
+      Information:
+        Name: 'Armor Piercing Ammo'
+        Description: 
+        - 'When selected, you can fire High Explosive ammo from the Bazooka'
+        Type: ammo
+        Slot: 1
+      Options:
+        Ammo_Item: Armor_Piercing_Rocket
+        Ammo_Capacity: 1
+        Infinite_Ammo: false
+        Cooldown: 10 #how long until this option can be choosen again in the loadout bar
+        Reload:
+          Duration: 100
+          Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
+          Reload_On_Switch: true #When switched to this loadout, weapon will need to be reloaded
+      Events:
+        OnRightClick:
+          SelfActions:
+            - Fire_Projectile(AP_Rocket_Projectile)
+            - ParticleEffect(SMOKE)
+            - PlaySound(Bazooka_Fire_sound,1,1)
+          Options:
+            Cancel_Interactions: true
+            Ammo_Per_action: 1
+          Requirements:
+            Requires_Ammo: true
+        OnReload:
+          SelfActions:
+            - PlaySound(Bazooka_Load,1,1)
+            - delay(100)
+            - PlaySound(Bazooka_Ready,1,1)
+    RapidReload:
+      LoadOut_Information:
+        Name: 'Rapid Reload'
+        Description: 
+        - 'Temporarly increases speed for 10 seconds'
+        Type: ability
+        Slot: 1
+      Options:
+        Cooldown: 500
+      Events:
+        OnSelect:
+          SelfActions:
+          - ModifyReload(0.5,300) #reduces reload by half for 15 seconds
