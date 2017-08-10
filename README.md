@@ -26,6 +26,9 @@ Projctiles which the weapon will shoot will be placed in their own folder, and h
 ### H3Custom Ammo Items
 Custom Ammo Items can be configured to be used as ammo. Ammo Items will also have their own folder where they can be placed in. Ammo Items can be given different names and lore, as well as data ID's which will allow for custom models to be used. If the Lore or Item data is changed, it will be automatically updated by the plugin similar to how CrackShotPlus works.
 
+### H3Leveling System
+The plugin will include and **optional** leveling system for guns. This system will use an experience points system, which can be configured to improve stats of guns as the player levels them up. It can also be used to unlock new abailities and attachments as well when the player reaches a certain level
+
 ### H3API
 There will be an API which will allow other plugins to easily add their own modules, events, actions, requirements, and more to WeaponsAPI, allowing for expansion which was not easily available with CrackShot. This plugin is also meant as a way to standardize weapons accross all plugins, meaning plugin developers who want weapons in their plugin would no longer need to code them themselves, but instead can use WeaponsAPI in their plugin and let WeaponsAPI do all the heavy work. This also allows for compatability and consistency between different weapons from different plugins.
 
@@ -36,5 +39,10 @@ Unlike CrackShot, WeaponsAPI will be an open sourced community effort, no worryi
 ## H2Example Configs
 These configs show how the AK-47 and Bazooka could be implemented in WeaponsAPI. I am using these configs as a base from which we can build the plugin around, so we can have a sense of how it will work. Any feedback is appreciated
 
+[Example Weapons Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleGunsConfig.yml)
 
-  
+[Example Projectile Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleProjectileConfig.yml)
+
+[Example Explosions Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleExplosionsConfig.yml)
+
+[Example Ammo Item Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleAmmoItemConfig)
