@@ -26,7 +26,7 @@ AK47:
       Events:
         OnRightClickHold:
           SelfActions:
-            - Fire_Projectile(AK-47_Projectile)
+            - FireProjectile(AK-47_Projectile)
             - ParticleEffect(SMOKE)
             - PlaySound(AK-47_sound,1,1)
           Options:
@@ -34,7 +34,7 @@ AK47:
             Cancel_Interactions: true #cancel interaction with blocks when held
             Ammo_Per_action: 1
           Requirements:
-            Requires_Ammo: true
+            - Requires_Ammo(true)
         OnLeftClick:
           SelfActions:
             - Zoom(5)
@@ -64,8 +64,7 @@ AK47:
           Duration: 40
           Sounds_Out_Of_Ammo: ENTITY_ITEM_BREAK-2-1-0
       Requirements:
-        Required_Item:
-        - AK-47_Grenade_Launcher #if player does not have this attachment then this will not be shown in the hotbar
+        - Required_Items(AK-47_Grenade_Launcher) #if player does not have this attachment then this will not be shown in the hotbar
       Events:
         OnRightClick:
           SelfActions:
@@ -73,7 +72,7 @@ AK47:
             - ParticleEffect(SMOKE)
             - PlaySound(AK-47_grenade_sound,1,1)
           Requirements:
-            Requires_Ammo: true
+            - Requires_Ammo(true)
           Options:
             Cancel_Interactions: true
             Ammo_Per_action: 1

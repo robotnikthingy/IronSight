@@ -1,4 +1,4 @@
-package WeaponsApi;
+package WeaponsApi.Projectile;
 
 /**
  * Created by Robotnik on 8/4/2017.
