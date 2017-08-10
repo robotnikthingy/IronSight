@@ -1,0 +1,40 @@
+BazookaExplosion:
+  Options:
+    FriendlyFire: true
+  Damage_Radius: #this option allows you to specify different radii which allows for more customized explosions. In this example, there are 2 explosion radii, one which has a radius of 3, and deals a small amount of damage and knockback, another with a radius of 1, which does a lot a damage and knockback. this means the closer to the explosion, the more damage and knockback
+    Radius1:
+      Damage: 2
+      KnockBack: 1
+      Radius: 3.0
+      Break_Blocks: true
+    Radius2:
+      Damage: 15
+      Radius: 1.0
+      KnockBack: 5
+      Break_Blocks: false
+  Events:
+    OnExplosion:
+      SelfActions: #when the explosion is created it will create a sphere of 10 cloud particles
+        - ParticleSphere(EXPLOSION_LARGE, 4, 10) #Creates a sphere of 10 particles
+        
+                - Shrapnel(BazookaShrapnel,10)
+                
+AP_BazookaExplosion:
+  Options:
+    FriendlyFire: true
+  Damage_Radius: #this option allows you to specify different radii which allows for more customized explosions. In this example, there are 2 explosion radii, one which has a radius of 3, and deals a small amount of damage and knockback, another with a radius of 1, which does a lot a damage and knockback. this means the closer to the explosion, the more damage and knockback
+    Radius1:
+      Damage: 2
+      KnockBack: 1
+      Radius: 3.0
+      Break_Blocks: true
+    Radius2:
+      Damage: 15
+      Radius: 1.0
+      KnockBack: 5
+      Break_Blocks: false
+  Events:
+    OnExplosion:
+      SelfActions: #when the explosion is created, it will create a particle effect and send 10 pieces of shrapnel in all directions
+        - Particle(EXPLOSION_LARGE)
+        - Shrapnel(BazookaShrapnel,10)
