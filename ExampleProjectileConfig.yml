@@ -1,0 +1,100 @@
+AK-47_Projectile:
+  Accuracy:
+    Base_Accuracy: 1.0
+    Sneak_Accuracy_Modifier: 0.5
+    Zoom_Accuracy_Modifier: 0.25
+  Damage:
+    Base_Damage: 6 #damage can be modified by attachments, abilities, or events
+    Damage_Based_On_Flight_Time:
+      Bonus_Damage_Per_Tick: -1
+      Maximum_Damage: 2
+  Options:
+    Projectile_Type: arrow
+    Projectile_Trails:
+      - Crit
+    Base_Speed: 35
+    Reset_Hit_Cooldown: true
+    FriendlyFire: true
+  Events:
+    OnHit_Entity: #what happens when the bullet hits a living entity
+      VictimActions: #actions which will only affect who was shot
+        - ParticleEffect(SMOKE)
+        
+AK-47_Grenade_Projectile:
+  Accuracy:
+    Base_Accuracy: 1.0
+    Sneak_Accuracy_Modifier: 0.5
+    Zoom_Accuracy_Modifier: 0.25
+  Damage:
+    Base_Damage: 10
+  Options:
+    Projectile_Type: egg
+    Projectile_Trails:
+      - CLOUD
+    Base_Speed: 15
+    Reset_Hit_Cooldown: true
+    FriendlyFire: true
+  Events:
+    OnHit: #what happens when the grenade hits ANYTHING
+      SelfActions: #causes an explosion with a radius of 3
+        - Explosion(3) 
+      Requirements: #grenade wont explode unless its 5 blocks away from the shooter
+        - DistanceFromShooter(5) 
+        
+HE_Rocket_Projectile:
+  Accuracy:
+    Base_Accuracy: 1.0
+    Sneak_Accuracy_Modifier: 0.5
+    Zoom_Accuracy_Modifier: 0.25
+  Damage:
+    Base_Damage: 10
+  Options:
+    Projectile_Type: fireball
+    Projectile_Trails:
+      - CLOUD
+      - SMOKE
+    Base_Speed: 15
+    Reset_Hit_Cooldown: true
+    FriendlyFire: true
+  Events:
+    OnHit: #what happens when the grenade hits ANYTHING
+      SelfActions: #creates a custom explosion when it hits something
+        - CustomExplosion(BazookaExplosion) 
+        
+AP_Rocket_Projectile:
+  Accuracy:
+    Base_Accuracy: 1.0
+    Sneak_Accuracy_Modifier: 0.5
+    Zoom_Accuracy_Modifier: 0.25
+  Damage:
+    Base_Damage: 20
+  Options:
+    Projectile_Type: fireball
+    Projectile_Trails:
+      - CLOUD
+      - SMOKE
+    Base_Speed: 15
+    Reset_Hit_Cooldown: true
+    FriendlyFire: true
+  Events:
+    OnHit: #what happens when the grenade hits ANYTHING
+      SelfActions: #creates a custom explosion when it hits something
+        - CustomExplosion(AP_BazookaExplosion)
+      VictimActions: #will do additional damage if the target is wearing armor
+        - ArmorDamage(5) 
+        
+BazookaShrapnel:
+  Accuracy:
+    Base_Accuracy: 1.0
+    Sneak_Accuracy_Modifier: 0.5
+    Zoom_Accuracy_Modifier: 0.25
+  Damage:
+    Base_Damage: 2
+  Options:
+    Projectile_Type: arrow
+    Projectile_Trails:
+      - Crit
+    Base_Speed: 25
+    Reset_Hit_Cooldown: true
+    FriendlyFire: true
+    Duration: 20 #projectiles will dissapear after 20 ticks
