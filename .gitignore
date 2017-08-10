@@ -47,9 +47,9 @@ Temporary Items
 .apdisk
 
 # IDE files and folders
-/bin/
-/.settings/
-/docs/
-/.idea/
+bin
+.settings
+docs
+.idea
 .project
 .classpath
