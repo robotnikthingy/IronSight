@@ -1,5 +1,5 @@
 name: WeaponsAPI
-main: WeaponsAPI.WeaponsAPI
+main: com.github.robotnikthingy.weaponsapi.WeaponsAPIPlugin
 version: 1.0.0
 author: Robotnikman (and anyone else who contributes, add your name here)
 load: startup
