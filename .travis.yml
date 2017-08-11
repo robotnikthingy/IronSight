@@ -1,0 +1,21 @@
+language: java
+jdk:
+- oraclejdk8
+sudo: false
+addons:
+  apt:
+    packages:
+    - oracle-java8-installer
+deploy:
+  provider: releases
+  file:
+  - "./API/target/API.jar"
+  - "./API/target/API-sources.jar"
+  - "./Implementation/target/WeaponsPlugin.jar"
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: Craftstuebchen/WeaponsAPI
+  overwrite: true
+  api-key:
+    secure: g9Fm6SGmub2uHsTWRYO9N8hSwabPsPs7Xxe+CKtmXa4U8oYQH6iSo5xDsovOHCrSM3INCRQAEE0YQsH4RN1JETmG98sR1+oYllA/U/8SvU1Ifs3WIAo4MX5myjD68gDr7eGXSW68ZPTJPjVTwuKrDGj8ui3xkOk8UcIGqyCOwnmwMGCvAF1IDI+cvs3TGRQ1Bs7dX62Y+NPdzNhvay8r7SNpp3szl8A66I+npCn+CE1fNOt/oz3YjDRPivgMDfUZOuHWysQdYjbXfptiFTwzFafEdGeTYlhvQYlD23y6/LW63umVyf649V08NvYhqTmDuf9Egy4G7Ew6tucITJo38opwjXLiNjl4FnNboop7Z5H9RqQPqGeSlkqWwPQNgs15G/2N6G/Qf5twjmmapN9yXRTmSekFxoITJzI8bF4jFKdcg3chJUA5TgM4PMOxSJJay3+uZuoxanHtXzKPUlCJgLP8VuX8yWV1oPRXDmovui8MRHcjaA0usX5IsAFybUNiddPZFojk9HYwZPX49W455IKaHqFlGQJipEEgSLPbHYeU+JcDwJwMCCxdXtLWePvzNj8qQTvH/JJGVQCH3hucv23i40GjJAj1YDTrVPXwNK578PdHlP04cEzJztFaTxoKEV4d6jS24BAPx0OKMPhzU5KVQsavP0rBnBGiEfLyOes=
