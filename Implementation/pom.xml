@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.robotnikthingy</groupId>
-            <artifactId>API</artifactId>
+            <artifactId>WeaponsAPI</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
