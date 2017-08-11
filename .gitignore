@@ -49,7 +49,9 @@ Temporary Items
 # IDE files and folders
 bin
 .settings
-docs
+API/docs
 .idea
 .project
 .classpath
+target
+*.iml
