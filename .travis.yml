@@ -9,8 +9,8 @@ addons:
 deploy:
   provider: releases
   file:
-  - "./API/target/API.jar"
-  - "./API/target/API-sources.jar"
+  - "./API/target/WeaponsAPI.jar"
+  - "./API/target/WeaponsAPI-sources.jar"
   - "./Implementation/target/WeaponsPlugin.jar"
   skip_cleanup: true
   on:
