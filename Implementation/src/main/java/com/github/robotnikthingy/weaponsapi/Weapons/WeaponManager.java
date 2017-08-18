@@ -21,7 +21,8 @@ public class WeaponManager {
         LoadWeapons(WeaponsAPIPlugin.WeaponsFolder);
     }
 
-    public void ReLoadWeapons(){
+    //Clears all weapons and loads any available from config files
+    public void ReloadWeapons(){
         Weapons.clear();
         LoadWeapons(WeaponsAPIPlugin.WeaponsFolder);
     }
