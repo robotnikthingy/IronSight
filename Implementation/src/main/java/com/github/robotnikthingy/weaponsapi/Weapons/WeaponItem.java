@@ -9,29 +9,20 @@ import java.io.File;
 
 /**
  * Created by Robotnik on 8/4/2017.
- * This represents a weapon and all its properties
+ * This represents a weapon item and all its properties
  */
-public class WeaponItem {
+public class WeaponItem extends AbstractWeapon{
 
-    public String Name;
     public String DisplayName;
-    private FileConfiguration ParentConfig;
-    private File ParentFile;
-    private ConfigurationSection WeaponConfig;
 
-    WeaponItem(String name, File file){
-        Name = name;
-        ParentFile = file;
-        ParentConfig = YamlConfiguration.loadConfiguration(file);
-        WeaponConfig = ParentConfig.getConfigurationSection(name);
-        LoadConfigOptions();
-    }
-
-    public void LoadConfigOptions(){
+    public WeaponItem(String name, File file){
+        super(name,file);
 
     }
 
-    public String getName(){
-        return Name;
-    }
+
+
+
+
+
 }
