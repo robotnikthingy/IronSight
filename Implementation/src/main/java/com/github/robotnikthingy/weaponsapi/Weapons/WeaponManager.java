@@ -18,24 +18,26 @@ public class WeaponManager {
     public static ArrayList<WeaponItem> Weapons = new ArrayList<WeaponItem>();
 
     WeaponManager(){
-        LoadWeapons(WeaponsAPIPlugin.WeaponsFolder);
+        loadWeapons(WeaponsAPIPlugin.WeaponsFolder);
     }
 
-    //Clears all weapons and loads any available from config files
-    public void ReloadWeapons(){
+    /**
+     * Reloads all weapons and their configurations
+     */
+    public void reloadWeapons(){
         Weapons.clear();
-        LoadWeapons(WeaponsAPIPlugin.WeaponsFolder);
+        loadWeapons(WeaponsAPIPlugin.WeaponsFolder);
     }
 
-    //Scans though all files in a folder and its subfolders, and adds and weapons found
-    public void LoadWeapons(File directory){
+    //Scans though all files in a folder and its subfolders, and adds any weapons found
+    public void loadWeapons(File directory){
         //clear first since this method will be used on a reload of the plugin
 
         File[] directoryListing = directory.listFiles();
         for (File file : directoryListing){
             //scan through subfolder for weapons if its a directory
             if(file.isDirectory()){
-                LoadWeapons(file);
+                loadWeapons(file);
             }
 
             String extension = "";
@@ -62,8 +64,16 @@ public class WeaponManager {
         }
     }
 
-    //Returns a WeaponItem from the manager if it exists
-    //if specified weapon does not exist then returns null
+
+
+
+    /**
+     * Returns a WeaponItem from the manager if it exists
+     * if specified weapon does not exist then returns null
+     *
+     * @param weaponName a String which represents a name of a weapon as found in a config file
+     * @return weapon. If weapon does not exist returns null.
+     */
     public WeaponItem getWeapon(String weaponName){
         for(WeaponItem weapon:Weapons){
             if(weapon.getName().equals(weaponName)){
