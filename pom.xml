@@ -12,18 +12,15 @@
         <module>API</module>
         <module>Implementation</module>
     </modules>
-
-
+    
     <repositories>
         <repository>
             <id>spigot-api</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
-
     </repositories>
 
     <dependencies>
-
         <!--Spigot API-->
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -31,8 +28,6 @@
             <version>1.12-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
-
 
 </project>
