@@ -1,8 +1,11 @@
-package com.github.robotnikthingy.weaponsapi.Ammo;
+package com.github.robotnikthingy.weaponsapi.ammo;
 
 /**
- * Created by Robotnik on 8/9/2017.
- * This represents an ammo item and all its properties
+ * Represents a piece of ammunition and its properties
+ * 
+ * @author Robotnik
+ * @since 8/9/2017
  */
 public class AmmoItem {
+	
 }
