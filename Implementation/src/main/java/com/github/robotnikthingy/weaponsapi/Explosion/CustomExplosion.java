@@ -1,7 +1,8 @@
-package com.github.robotnikthingy.weaponsapi.Explosion;
+package com.github.robotnikthingy.weaponsapi.explosion;
 
 /**
- * Created by Robotnik on 8/4/2017.
+ * @author Robotnik
+ * @since 8/4/2017
  */
 public class CustomExplosion {
 }

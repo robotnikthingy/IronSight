@@ -5,11 +5,10 @@ package com.github.robotnikthingy.weaponsapi;
  */
 public class WeaponsAPI {
 
-    public static final WeaponsAPI api = new WeaponsAPI();
+    public static final WeaponsAPI API = new WeaponsAPI();
     private WeaponsAPIInterface weaponsAPIInterface;
 
-    private WeaponsAPI() {
-    }
+    private WeaponsAPI() {}
 
     public void setApi(WeaponsAPIInterface weaponsAPIInterface) {
         if (this.weaponsAPIInterface != null)
@@ -20,6 +19,5 @@ public class WeaponsAPI {
     public WeaponsAPIInterface getWeaponsAPIInterface() {
         return weaponsAPIInterface;
     }
-
 
 }

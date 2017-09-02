@@ -1,8 +1,11 @@
-package com.github.robotnikthingy.weaponsapi.Gui;
+package com.github.robotnikthingy.weaponsapi.gui;
 
 /**
- * Created by Robotnik on 8/9/2017.
- * Will handle managing and updating lore related to the plugin
+ * Handles the updating of lore for all items related to the plugin
+ * 
+ * @author Robotnik
+ * @since 8/9/2017
  */
 public class LoreManager {
+	
 }

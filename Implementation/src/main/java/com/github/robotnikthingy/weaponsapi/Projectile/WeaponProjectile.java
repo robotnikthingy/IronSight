@@ -1,7 +1,9 @@
-package com.github.robotnikthingy.weaponsapi.Projectile;
+package com.github.robotnikthingy.weaponsapi.projectile;
 
 /**
- * Created by Robotnik on 8/4/2017.
+ * @author Robotnik
+ * @since 8/4/2017
  */
 public class WeaponProjectile {
+	
 }
