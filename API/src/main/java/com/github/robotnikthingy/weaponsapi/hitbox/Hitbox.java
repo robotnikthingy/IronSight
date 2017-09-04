@@ -15,7 +15,7 @@ import org.bukkit.util.Vector;
  * 
  * @author Parker Hawke - 2008Choco
  */
-public class Hitbox {
+public class Hitbox implements Cloneable {
 	
 	private final UUID world;
 	private Vector min, max;
@@ -301,6 +301,29 @@ public class Hitbox {
 		this.max.setX(max.getX() + amount);
 		this.max.setY(max.getY() + amount);
 		this.max.setZ(max.getZ() + amount);
+	}
+	
+	@Override
+	public int hashCode() {
+		int prime = 31, result = 1;
+		result = prime * result + max.hashCode();
+		result = prime * result + min.hashCode();
+		result = prime * result + world.hashCode();
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) return true;
+		if (object == null || !(object instanceof Hitbox)) return false;
+		
+		Hitbox hitbox = (Hitbox) object;
+		return world.equals(hitbox.world) && min.equals(hitbox.min) && max.equals(hitbox.max);
+	}
+	
+	@Override
+	public Hitbox clone() {
+		return new Hitbox(Bukkit.getWorld(world), min, max);
 	}
 	
 }
