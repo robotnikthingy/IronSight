@@ -1,4 +1,4 @@
-package com.github.robotnikthingy.weaponsapi.Weapons;
+package com.github.robotnikthingy.weaponsapi.weapon;
 
 import java.io.File;
 import org.bukkit.Location;

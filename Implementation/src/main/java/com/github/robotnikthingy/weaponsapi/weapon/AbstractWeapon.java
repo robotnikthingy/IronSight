@@ -1,4 +1,4 @@
-package com.github.robotnikthingy.weaponsapi.Weapons;
+package com.github.robotnikthingy.weaponsapi.weapon;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
