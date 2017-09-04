@@ -1,6 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.attachment;
 
 import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
+import com.github.robotnikthingy.weaponsapi.weapon.state.Attachable;
 
 import org.bukkit.entity.Player;
 
@@ -17,6 +18,13 @@ public interface Attachment {
 	 * @return the attachment name
 	 */
 	public String getName();
+	
+	/**
+	 * Get all possible positions on a weapon for this attachment
+	 * 
+	 * @return the attachment positions
+	 */
+	public AttachmentPosition[] getPositions();
 	
 	/**
 	 * Check whether this attachment may be attached to a given weapon
@@ -39,7 +47,9 @@ public interface Attachment {
 	/**
 	 * Attach this attachment to the provided weapon. Any extra effects or
 	 * extraneous features should be implemented in this attach method, though
-	 * the actual attachment of the weapon will be handled by implementation
+	 * the actual attachment of the weapon will be handled by implementation. For
+	 * actions to be fired after the attachment was successful, see
+	 * {@link Attachable#attach(Player, Attachment)}
 	 * 
 	 * @param player the player that attached the attachment
 	 * @param weapon the weapon to attach the attachment to

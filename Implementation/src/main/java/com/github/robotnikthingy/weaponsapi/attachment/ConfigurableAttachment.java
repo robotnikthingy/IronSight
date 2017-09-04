@@ -27,6 +27,11 @@ public class ConfigurableAttachment extends ConfigurableObject implements Attach
 	public String getName() {
 		return name;
 	}
+	
+	@Override
+	public AttachmentPosition[] getPositions() {
+		return null; // TODO: Attachment position
+	}
 
 	@Override
 	public boolean isAttachableTo(Weapon weapon) {
