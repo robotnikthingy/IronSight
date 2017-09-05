@@ -1,10 +1,12 @@
 package com.github.robotnikthingy.weaponsapi.weapon;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.github.robotnikthingy.weaponsapi.WeaponsAPIPlugin;
+import com.google.common.collect.ImmutableSet;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,7 +20,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
  */
 public class WeaponManager {
 
-    private final List<WeaponItem> weapons = new ArrayList<WeaponItem>();
+    private final Set<Weapon> weapons = new HashSet<>();
 
     public WeaponManager() {
     	this.loadWeapons(WeaponsAPIPlugin.FOLDER_WEAPONS);
@@ -31,6 +33,24 @@ public class WeaponManager {
         this.weapons.clear();
         this.loadWeapons(WeaponsAPIPlugin.FOLDER_WEAPONS);
     }
+    
+    /**
+     * Registers a weapon to the weapon registry
+     * 
+     * @param weapon the weapon to register
+     */
+    public void registerWeapon(Weapon weapon) {
+    	this.weapons.add(weapon);
+    }
+    
+    /**
+     * Unregisters a weapon from the weapon registry
+     * 
+     * @param weapon the weapon to unregister
+     */
+    public void unregisterWeapon(Weapon weapon) {
+    	this.weapons.remove(weapon);
+    }
 
     /**
      * Returns a WeaponItem from the manager if it exists. Will return null if the specified
@@ -39,7 +59,7 @@ public class WeaponManager {
      * @param weaponName the name of the weapon as found in the configuration file
      * @return the resulting weapon. null if none exist
      */
-    public WeaponItem getWeapon(String weaponName){
+    public Weapon getWeapon(String weaponName){
     	return weapons.stream()
     		.filter(w -> w.getName().equals(weaponName))
     		.findFirst().orElse(null);
@@ -53,6 +73,22 @@ public class WeaponManager {
      */
     public boolean weaponExists(String weaponName) {
     	return weapons.stream().anyMatch(w -> w.getName().equals(weaponName));
+    }
+    
+    /**
+     * Get an immutable collection of all registered weapons
+     * 
+     * @return all registered weapons
+     */
+    public Collection<Weapon> getWeapons() {
+		return ImmutableSet.copyOf(weapons);
+	}
+    
+    /**
+     * Clear all weapons from the registry
+     */
+    public void clearWeapons() {
+    	this.weapons.clear();
     }
     
     /**
@@ -84,7 +120,7 @@ public class WeaponManager {
             
             for (String key : configSection.getKeys(false)) {
                 // We found a weapon so lets add it
-                weapons.add(new WeaponItem(key, file));
+                weapons.add(new ConfigurableWeapon(key, file));
             }
         }
     }
