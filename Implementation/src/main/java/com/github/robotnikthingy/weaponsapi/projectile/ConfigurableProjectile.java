@@ -15,8 +15,8 @@ import org.bukkit.entity.Player;
  */
 public class ConfigurableProjectile extends ConfigurableObject implements WeaponThrowable {
 	
-	public ConfigurableProjectile(String name, File file) {
-		super(name, file);
+	public ConfigurableProjectile(File file) {
+		super(file);
 	}
 	
 	@Override

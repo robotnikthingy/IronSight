@@ -14,8 +14,8 @@ import org.bukkit.inventory.ItemStack;
  */
 public class ConfigurableAmmo extends ConfigurableObject implements Ammunition {
 	
-    public ConfigurableAmmo(String name, File file){
-    	super(name, file);
+    public ConfigurableAmmo(File file){
+    	super(file);
     }
     
     public void loadConfigurationOptions() {

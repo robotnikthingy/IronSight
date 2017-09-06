@@ -11,8 +11,8 @@ import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
  */
 public class ConfigurableWeapon extends ConfigurableObject implements Weapon {
 
-    public ConfigurableWeapon(String name, File file){
-    	super(name, file);
+    public ConfigurableWeapon(File file){
+    	super(file);
     }
     
     public void loadConfigurationOptions(){

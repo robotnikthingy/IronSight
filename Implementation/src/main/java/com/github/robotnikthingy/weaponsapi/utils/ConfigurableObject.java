@@ -2,23 +2,20 @@ package com.github.robotnikthingy.weaponsapi.utils;
 
 import java.io.File;
 
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public abstract class ConfigurableObject {
 	
-    protected final FileConfiguration parentConfig;
 	protected final File parentFile;
-	protected final ConfigurationSection weaponConfig;
+    protected final FileConfiguration parentConfig;
     
-    protected final String name;
+	protected final String name;
 
-    public ConfigurableObject(String name, File file) {
-    	this.name = name;
+    public ConfigurableObject(File file) {
         this.parentFile = file;
         this.parentConfig = YamlConfiguration.loadConfiguration(file);
-        this.weaponConfig = parentConfig.getConfigurationSection(name);
+        this.name = file.getName().substring(0, file.getName().lastIndexOf('.'));
         
         this.loadConfigurationOptions();
     }

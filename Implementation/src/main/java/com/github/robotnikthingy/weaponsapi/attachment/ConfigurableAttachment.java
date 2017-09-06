@@ -14,8 +14,8 @@ import org.bukkit.entity.Player;
  */
 public class ConfigurableAttachment extends ConfigurableObject implements Attachment {
 	
-	public ConfigurableAttachment(String name, File file) {
-		super(name, file);
+	public ConfigurableAttachment(File file) {
+		super(file);
 	}
 	
 	@Override

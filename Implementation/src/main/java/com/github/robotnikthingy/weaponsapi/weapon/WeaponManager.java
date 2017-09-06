@@ -8,10 +8,6 @@ import java.util.Set;
 import com.github.robotnikthingy.weaponsapi.WeaponsAPIPlugin;
 import com.google.common.collect.ImmutableSet;
 
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-
 /**
  * Keeps track of and manages all weapons registered by the plugin
  * 
@@ -97,32 +93,24 @@ public class WeaponManager {
      * 
      * @param directory the directory to load weapons from
      */
-    private void loadWeapons(File directory) {
-        for (File file : directory.listFiles()) {
-            // Scan through subfolder for weapons if its a directory
-            if (file.isDirectory()) {
-                loadWeapons(file);
-            }
-
-            String extension = "";
-            int i = file.getName().lastIndexOf('.');
-            if (i > 0) {
-                extension = file.getName().substring(i + 1);
-            }
-
-            // It's a config file
-            if (!extension.equals("yml")) continue;
-            
-            // Try and find configuration section for the weapon
-            FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-            ConfigurationSection configSection = config.getDefaultSection();
-            if (configSection == null) continue;
-            
-            for (String key : configSection.getKeys(false)) {
-                // We found a weapon so lets add it
-                weapons.add(new ConfigurableWeapon(key, file));
-            }
-        }
-    }
+	private void loadWeapons(File directory) {
+		for (File file : directory.listFiles()) {
+			// Scan through subfolder for weapons if its a directory
+			if (file.isDirectory()) {
+				loadWeapons(file);
+			}
+			
+			String extension = "";
+			int i = file.getName().lastIndexOf('.');
+			if (i > 0) {
+				extension = file.getName().substring(i + 1);
+			}
+			
+			// It's a config file
+			if (!extension.equals("yml")) continue;
+			
+			weapons.add(new ConfigurableWeapon(file));
+		}
+	}
     
 }
