@@ -1,7 +1,10 @@
 package com.github.robotnikthingy.weaponsapi.bullet;
 
 import com.github.robotnikthingy.weaponsapi.ammo.Ammunition;
+import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
 import com.github.robotnikthingy.weaponsapi.weapon.state.Shootable;
+
+import org.bukkit.entity.Player;
 
 /**
  * Represents a moving bullet fired from a {@link Shootable} weapon
@@ -38,5 +41,19 @@ public interface Bullet {
 	 * @return the bullet's ammunition
 	 */
 	public Ammunition getBelongingAmmo();
+	
+	/**
+	 * Get the weapon that shot this bullet
+	 * 
+	 * @return the shooting weapon
+	 */
+	public Weapon getBelongingWeapon();
+	
+	/**
+	 * Get the player that shot this bullet
+	 * 
+	 * @return the shooter. Can be null
+	 */
+	public Player getShooter();
 	
 }
