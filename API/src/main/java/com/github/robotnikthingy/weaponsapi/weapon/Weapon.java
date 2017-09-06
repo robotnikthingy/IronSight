@@ -14,4 +14,11 @@ public interface Weapon {
 	 */
 	public String getName();
 	
+	/**
+	 * Get the amount of damage that this weapon will inflict
+	 * 
+	 * @return the weapon damage
+	 */
+	public double getDamage();
+	
 }

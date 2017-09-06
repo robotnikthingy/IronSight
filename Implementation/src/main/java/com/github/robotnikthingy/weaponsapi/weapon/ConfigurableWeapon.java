@@ -23,5 +23,10 @@ public class ConfigurableWeapon extends ConfigurableObject implements Weapon {
     public String getName() {
     	return name;
     }
+    
+    @Override
+    public double getDamage() {
+    	return 0; // TODO Configurable damage values
+    }
 
 }
