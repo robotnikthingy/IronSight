@@ -46,7 +46,7 @@ AK47:
         OnReload:
           SelfActions:
             - PlaySound(AK-47_open,1,1)
-            - delay(100) #causes a 100 tick delay before the next action in the list happens
+            - delay(100) #causes a 100 tick delay before the next mechanicAction in the list happens
             - PlaySound(AK-47_close,1,1)
     Grenade_Launcher:
       LoadOut_Information:
