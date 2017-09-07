@@ -6,18 +6,24 @@ package com.github.robotnikthingy.weaponsapi;
 public class WeaponsAPI {
 
     public static final WeaponsAPI API = new WeaponsAPI();
-    private WeaponsAPIInterface weaponsAPIInterface;
+    private IWeaponsAPI weaponsAPI;
 
     private WeaponsAPI() {}
 
-    public void setApi(WeaponsAPIInterface weaponsAPIInterface) {
-        if (this.weaponsAPIInterface != null)
+    public void setAPI(IWeaponsAPI weaponsAPI) {
+        if (this.weaponsAPI != null)
             throw new ExceptionInInitializerError("API already initialized.");
-        this.weaponsAPIInterface = weaponsAPIInterface;
+        
+        this.weaponsAPI = weaponsAPI;
     }
 
-    public WeaponsAPIInterface getWeaponsAPIInterface() {
-        return weaponsAPIInterface;
-    }
+    /**
+     * Get the API compatibility layer bridging the API to the plugin
+     * 
+     * @return the API compatibility layer
+     */
+	public IWeaponsAPI getAPI() {
+		return weaponsAPI;
+	}
 
 }

@@ -3,24 +3,27 @@ package com.github.robotnikthingy.weaponsapi;
 import java.io.File;
 import java.util.Arrays;
 
+import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.weapon.WeaponManager;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * @author Robotnik
  * @since 8/4/2017
  */
-public class WeaponsAPIPlugin extends JavaPlugin {
+public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
 	
-	private static WeaponsAPIPlugin instance;
+	private static WeaponsPlugin instance;
 
-    public static final File FOLDER_PLUGIN = WeaponsAPIPlugin.getInstance().getDataFolder();
+    public static final File FOLDER_PLUGIN = WeaponsPlugin.getInstance().getDataFolder();
     public static final File FOLDER_WEAPONS = new File(FOLDER_PLUGIN, "/Weapons");
     public static final File FOLDER_PROJECTILES = new File(FOLDER_PLUGIN, "/Projectiles");
     public static final File FOLDER_ATTACHMENTS = new File(FOLDER_PLUGIN, "/Attachments");
     public static final File FOLDER_ITEMS = new File(FOLDER_PLUGIN, "/Items");
     public static final File FOLDER_EXPLOSIONS = new File(FOLDER_PLUGIN, "/Explosions");
 
-    private WeaponsAPIInterface weaponsAPIInterface;
+    private WeaponManager weaponManager;
     
     @Override
     public void onEnable() {
@@ -28,8 +31,11 @@ public class WeaponsAPIPlugin extends JavaPlugin {
     	this.initFolders(FOLDER_PLUGIN, FOLDER_WEAPONS, FOLDER_PROJECTILES, 
     					FOLDER_ATTACHMENTS, FOLDER_ITEMS, FOLDER_EXPLOSIONS);
     	
-        this.weaponsAPIInterface = new WeaponsAPIImplementation();
-        WeaponsAPI.API.setApi(weaponsAPIInterface);
+    	// Load necessary variables
+    	this.weaponManager = new WeaponManager();
+    	
+    	// Setup the API. Ready for use
+        WeaponsAPI.API.setAPI(this);
     }
 
     /**
@@ -37,9 +43,14 @@ public class WeaponsAPIPlugin extends JavaPlugin {
      * 
      * @return this instance
      */
-    public static WeaponsAPIPlugin getInstance() {
+    public static WeaponsPlugin getInstance() {
         return instance;
     }
+    
+    @Override
+    public IWeaponManager getWeaponManager() {
+		return weaponManager;
+	}
     
     /**
      * Create any directories passed into this method

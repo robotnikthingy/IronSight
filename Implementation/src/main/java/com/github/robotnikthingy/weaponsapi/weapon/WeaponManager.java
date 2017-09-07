@@ -5,7 +5,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.github.robotnikthingy.weaponsapi.WeaponsAPIPlugin;
+import com.github.robotnikthingy.weaponsapi.WeaponsPlugin;
+import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
 import com.google.common.collect.ImmutableSet;
 
 /**
@@ -14,82 +15,55 @@ import com.google.common.collect.ImmutableSet;
  * @author Robotnik
  * @since 8/9/2017
  */
-public class WeaponManager {
+public class WeaponManager implements IWeaponManager {
 
     private final Set<Weapon> weapons = new HashSet<>();
 
     public WeaponManager() {
-    	this.loadWeapons(WeaponsAPIPlugin.FOLDER_WEAPONS);
+    	this.loadWeapons(WeaponsPlugin.FOLDER_WEAPONS);
     }
 
-    /**
-     * Reloads all weapons and their configurations
-     */
+    @Override
     public void reloadWeapons(){
         this.weapons.clear();
-        this.loadWeapons(WeaponsAPIPlugin.FOLDER_WEAPONS);
+        this.loadWeapons(WeaponsPlugin.FOLDER_WEAPONS);
     }
     
-    /**
-     * Registers a weapon to the weapon registry
-     * 
-     * @param weapon the weapon to register
-     */
+    @Override
     public void registerWeapon(Weapon weapon) {
     	this.weapons.add(weapon);
     }
     
-    /**
-     * Unregisters a weapon from the weapon registry
-     * 
-     * @param weapon the weapon to unregister
-     */
+    @Override
     public void unregisterWeapon(Weapon weapon) {
     	this.weapons.remove(weapon);
     }
 
-    /**
-     * Returns a WeaponItem from the manager if it exists. Will return null if the specified
-     * weapon does not exist
-     *
-     * @param weaponName the name of the weapon as found in the configuration file
-     * @return the resulting weapon. null if none exist
-     */
+    @Override
     public Weapon getWeapon(String weaponName){
     	return weapons.stream()
     		.filter(w -> w.getName().equals(weaponName))
     		.findFirst().orElse(null);
     }
     
-    /**
-     * Check whether a weapon exists and is registered to the weapon manager
-     * 
-     * @param weaponName the name of the weapon as found in the configuration file
-     * @return true if the weapon exists, false otherwise
-     */
+    @Override
     public boolean weaponExists(String weaponName) {
     	return weapons.stream().anyMatch(w -> w.getName().equals(weaponName));
     }
     
-    /**
-     * Get an immutable collection of all registered weapons
-     * 
-     * @return all registered weapons
-     */
+    @Override
     public Collection<Weapon> getWeapons() {
 		return ImmutableSet.copyOf(weapons);
 	}
     
-    /**
-     * Clear all weapons from the registry
-     */
+    @Override
     public void clearWeapons() {
     	this.weapons.clear();
     }
     
     /**
      * Scans through all files in a folder and its children. Adds any weapons found to the
-     * weapons list defined within {@link WeaponManager}
+     * weapons list defined within {@link IWeaponManager}
      * 
      * @param directory the directory to load weapons from
      */
