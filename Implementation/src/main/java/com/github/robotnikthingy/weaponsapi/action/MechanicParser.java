@@ -22,7 +22,7 @@ public class MechanicParser {
         //get all the parameters
         String[] parameters = parameterString.split(",");
 
-        MechanicAction mechanicAction = new MechanicAction(actionName, AbstractMechanic.mechanicType.ACTION,parameters);
+        MechanicAction mechanicAction = new MechanicAction(actionName,parameters);
 
         return mechanicAction;
     }
