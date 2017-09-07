@@ -5,6 +5,7 @@ import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
 import com.github.robotnikthingy.weaponsapi.weapon.state.Shootable;
 
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 /**
  * Represents a moving bullet fired from a {@link Shootable} weapon
@@ -14,18 +15,19 @@ import org.bukkit.entity.Player;
 public interface Bullet {
 	
 	/**
-	 * Set the speed of the bullet
+	 * Set the velocity for this bullet. Bullet velocity will be applied
+	 * instantaneously such that it's still valid
 	 * 
-	 * @param speed the new speed to set
+	 * @param velocity the new bullet velocity
 	 */
-	public void setSpeed(double speed);
+	public void setVelocity(Vector velocity);
 	
 	/**
-	 * Get the current speed of the bullet
+	 * Get the bullet's current velocity
 	 * 
-	 * @return the speed of the bullet
+	 * @return the bullet velocity
 	 */
-	public double getSpeed();
+	public Vector getVelocity();
 	
 	/**
 	 * Check whether this bullet penetrates through entities and continues
@@ -33,7 +35,7 @@ public interface Bullet {
 	 * 
 	 * @return true if penetrates. false if stops after hitting entity
 	 */
-	public boolean penetrateEntities();
+	public boolean penetratesEntities();
 	
 	/**
 	 * Get the ammunition representing this bullet
@@ -55,5 +57,25 @@ public interface Bullet {
 	 * @return the shooter. Can be null
 	 */
 	public Player getShooter();
+	
+	/**
+	 * Check whether this bullet entity is still valid. A valid bullet
+	 * state indicates that it is still a moving entity. Upon hitting an
+	 * entity or a wall, the bullet is no longer considered valid
+	 * 
+	 * @return the validity of the bullet
+	 */
+	public boolean isValid();
+	
+	/**
+	 * Get the speed of this bullet. The speed is equal to the magnitude
+	 * of the bullet's velocity {@link Vector#length()}
+	 * 
+	 * @return the speed of the bullet
+	 */
+	public default double getSpeed() {
+		if (!isValid()) return -0.0;
+		return getVelocity().length();
+	}
 	
 }
