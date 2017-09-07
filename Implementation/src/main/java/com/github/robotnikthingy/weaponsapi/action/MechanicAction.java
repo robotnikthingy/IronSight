@@ -1,16 +1,15 @@
 package com.github.robotnikthingy.weaponsapi.action;
+
 /**
- * Represents an action, such as shooting a projectile or playing a sound
+ * Represents an action such as shooting a projectile or playing a sound
  *
  * @author Robotnik
  * @since 9/7/2017
  */
+public class MechanicAction extends AbstractMechanic {
 
-import java.util.ArrayList;
-
-public class MechanicAction extends AbstractMechanic{
-
-    protected MechanicAction(String name, String[] parameters){
-        super(name, mechanicType.ACTION, parameters);
+    protected MechanicAction(String name, String[] parameters) {
+        super(MechanicType.ACTION, name, parameters);
     }
+    
 }

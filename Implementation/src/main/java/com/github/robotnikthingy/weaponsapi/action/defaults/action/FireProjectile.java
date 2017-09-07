@@ -12,7 +12,7 @@ import com.github.robotnikthingy.weaponsapi.action.MechanicAction;
 public class FireProjectile extends MechanicAction {
 
     //will need to add target info and stuff later to determine where the projectile is being fire from, where its being fired at, etc
-    FireProjectile(String name, String[] parameters){
-        super(name,parameters);
+    FireProjectile(String[] parameters){
+        super("FireProjectile", parameters);
     }
 }
