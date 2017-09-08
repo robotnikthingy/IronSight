@@ -9,6 +9,8 @@ import com.github.robotnikthingy.weaponsapi.weapon.WeaponManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
+ * The main JavaPlugin class for the WeaponsAPI plugin implementation
+ * 
  * @author Robotnik
  * @since 8/4/2017
  */

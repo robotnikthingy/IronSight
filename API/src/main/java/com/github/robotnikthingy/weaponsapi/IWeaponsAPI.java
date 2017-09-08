@@ -3,7 +3,10 @@ package com.github.robotnikthingy.weaponsapi;
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
 
 /**
- * Created by ysl3000
+ * Contains various methods to bridge common features between API and 
+ * implementation including the WeaponManager, etc.
+ * 
+ * @author ysl3000
  */
 public interface IWeaponsAPI {
 	

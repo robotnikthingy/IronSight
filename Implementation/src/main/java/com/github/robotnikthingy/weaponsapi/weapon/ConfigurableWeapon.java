@@ -15,6 +15,7 @@ public class ConfigurableWeapon extends ConfigurableObject implements Weapon {
     	super(file);
     }
     
+    @Override
     public void loadConfigurationOptions(){
     	// TODO: Load values from configuration file
     }

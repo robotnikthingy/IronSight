@@ -18,6 +18,13 @@ public abstract class AbstractMechanic {
 	private final MechanicType type;
 	private final String[] parameters;
 
+	/**
+	 * Construct a new AbstractMechanic given a type, name and parameters
+	 * 
+	 * @param type the type of mechanic
+	 * @param name the mechanic name as represented in the configuration file
+	 * @param parameters the parameters passed
+	 */
     public AbstractMechanic(MechanicType type, String name, String[] parameters){
     	this.type = type;
     	this.name = name;
