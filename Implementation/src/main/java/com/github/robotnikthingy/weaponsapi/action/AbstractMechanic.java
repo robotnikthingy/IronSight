@@ -3,13 +3,16 @@ package com.github.robotnikthingy.weaponsapi.action;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+import com.github.robotnikthingy.weaponsapi.mechanic.Mechanic;
+import com.github.robotnikthingy.weaponsapi.mechanic.MechanicType;
+
 /**
- * Represents the foundation of an action from which actions, requirements 
- * and target actions will inherit
+ * Represents the foundation of an action from which actions, requirements,
+ * events and targets will inherit
  * 
  * @author Robotnik
  */
-public abstract class AbstractMechanic {
+public abstract class AbstractMechanic implements Mechanic {
 	
 	// This can likely be simplified... Matches "name(parameter)", "name(parameter, parameter)", and so on and so forth
 	public static final Pattern MECHANIC_PATTERN = Pattern.compile("(\\w+)(?:\\((\\s*(?:\\w+)*(?:,(?:\\s*\\w+))*\\s*)\\))");
@@ -31,51 +34,19 @@ public abstract class AbstractMechanic {
     	this.parameters = parameters;
     }
     
-    /**
-     * Get the name of this mechanic
-     * 
-     * @return the mechanic name
-     */
+    @Override
     public String getName() {
 		return name;
 	}
     
-    /**
-     * Get the type of mechanic represented by this object
-     * 
-     * @return the represented mechanic type
-     */
-    public MechanicType getType() {
-		return type;
-	}
-    
-    /**
-     * Get an array of parameters passed to the abstract mechanic
-     * 
-     * @return the mechanic parameters
-     */
+    @Override
     public String[] getParameters() {
 		return Arrays.copyOf(parameters, parameters.length);
 	}
     
-    /**
-     * Represents all types of mechanics including actions, requirements, etc.
-     * 
-     * @author Robotnik
-     */
-    public enum MechanicType {
-    	
-    	/**
-    	 * Represents an executable action
-    	 */
-    	ACTION,
-    	
-    	/**
-    	 * Represents a condition that must be met before an action may be 
-    	 * executed
-    	 */
-    	REQUIREMENT;
-    	
-    }
+    @Override
+    public MechanicType getType() {
+		return type;
+	}
 
 }

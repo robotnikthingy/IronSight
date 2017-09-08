@@ -1,5 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.action;
 
+import com.github.robotnikthingy.weaponsapi.mechanic.MechanicType;
+
 /**
  * Represents a requirement that must be conditionally met
  *

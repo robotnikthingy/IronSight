@@ -1,5 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.action;
 
+import com.github.robotnikthingy.weaponsapi.mechanic.MechanicType;
+
 /**
  * Represents an action such as shooting a projectile or playing a sound
  *
