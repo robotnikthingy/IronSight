@@ -37,7 +37,7 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     	this.weaponManager = new WeaponManager();
     	
     	// Setup the API. Ready for use
-        WeaponsAPI.API.setAPI(this);
+        WeaponsAPI.setAPI(this);
     }
 
     /**

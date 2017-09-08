@@ -1,5 +1,7 @@
 package com.github.robotnikthingy.weaponsapi;
 
+import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+
 /**
  * The main class bridging the API and WeaponsAPI plugin implementation.
  * Most values retrieved from the API will be interfaces and implemented in the
@@ -14,8 +16,7 @@ package com.github.robotnikthingy.weaponsapi;
  */
 public class WeaponsAPI {
 
-    public static final WeaponsAPI API = new WeaponsAPI();
-    private IWeaponsAPI weaponsAPI;
+    private static IWeaponsAPI weaponsAPI;
 
     private WeaponsAPI() {}
     
@@ -28,11 +29,11 @@ public class WeaponsAPI {
      * 
      * @throws ExceptionInInitializerError if the API has already been set
      */
-    public void setAPI(IWeaponsAPI weaponsAPI) {
-        if (this.weaponsAPI != null)
+    public static void setAPI(IWeaponsAPI weaponsAPI) {
+        if (weaponsAPI != null)
             throw new ExceptionInInitializerError("API already initialized.");
         
-        this.weaponsAPI = weaponsAPI;
+        WeaponsAPI.weaponsAPI = weaponsAPI;
     }
 
     /**
@@ -40,8 +41,18 @@ public class WeaponsAPI {
      * 
      * @return the API compatibility layer
      */
-	public IWeaponsAPI getAPI() {
+	public static IWeaponsAPI getAPI() {
 		return weaponsAPI;
+	}
+	
+	/**
+	 * Get the plugin weapon manager. All weapons should be registered here in order
+	 * to be handled by the plugin
+	 * 
+	 * @return the weapon manager
+	 */
+	public static IWeaponManager getWeaponManager() {
+		return weaponsAPI.getWeaponManager();
 	}
 
 }
