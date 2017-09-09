@@ -4,8 +4,10 @@ import java.io.File;
 import java.util.Arrays;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.weapon.WeaponManager;
 
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -53,6 +55,11 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     public IWeaponManager getWeaponManager() {
 		return weaponManager;
 	}
+    
+    @Override
+    public WeaponsPlayer getPlayer(Player player) {
+    	return null; // TODO: Return a WeaponsPlayer implementation from a Map
+    }
     
     /**
      * Create any directories passed into this method

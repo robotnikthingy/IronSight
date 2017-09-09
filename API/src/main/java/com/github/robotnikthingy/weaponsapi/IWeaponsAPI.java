@@ -1,6 +1,9 @@
 package com.github.robotnikthingy.weaponsapi;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
+
+import org.bukkit.entity.Player;
 
 /**
  * Contains various methods to bridge common features between API and 
@@ -17,5 +20,13 @@ public interface IWeaponsAPI {
 	 * @return the weapon manager
 	 */
 	public IWeaponManager getWeaponManager();
+	
+	/**
+	 * Get a WeaponsPlayer instance given a Bukkit {@link Player}
+	 * 
+	 * @param player the player to retrieve an instance of
+	 * @return the related WeaponsPlayer instance
+	 */
+	public WeaponsPlayer getPlayer(Player player);
 	
 }

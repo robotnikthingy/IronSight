@@ -1,6 +1,9 @@
 package com.github.robotnikthingy.weaponsapi;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
+
+import org.bukkit.entity.Player;
 
 /**
  * The main class bridging the API and WeaponsAPI plugin implementation.
@@ -53,6 +56,16 @@ public class WeaponsAPI {
 	 */
 	public static IWeaponManager getWeaponManager() {
 		return weaponsAPI.getWeaponManager();
+	}
+	
+	/**
+	 * Get a WeaponsPlayer instance given a Bukkit {@link Player}
+	 * 
+	 * @param player the player to retrieve an instance of
+	 * @return the related WeaponsPlayer instance
+	 */
+	public static WeaponsPlayer getPlayer(Player player) {
+		return weaponsAPI.getPlayer(player);
 	}
 
 }
