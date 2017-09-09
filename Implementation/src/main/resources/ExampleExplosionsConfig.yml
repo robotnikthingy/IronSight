@@ -14,10 +14,10 @@ BazookaExplosion:
       Break_Blocks: false
   Events:
     OnExplosion:
-      SelfActions: #when the explosion is created it will create a sphere of 10 cloud particles
+      Self: #when the explosion is created it will create a sphere of 10 cloud particles
+        Actions:
         - ParticleSphere(EXPLOSION_LARGE, 4, 10) #Creates a sphere of 10 particles
-        
-                - Shrapnel(BazookaShrapnel,10)
+        - Shrapnel(BazookaShrapnel,10)
                 
 AP_BazookaExplosion:
   Options:
@@ -35,6 +35,7 @@ AP_BazookaExplosion:
       Break_Blocks: false
   Events:
     OnExplosion:
-      SelfActions: #when the explosion is created, it will create a particle effect and send 10 pieces of shrapnel in all directions
+      Self: #when the explosion is created, it will create a particle effect and send 10 pieces of shrapnel in all directions
+        Actions:
         - Particle(EXPLOSION_LARGE)
         - Shrapnel(BazookaShrapnel,10)

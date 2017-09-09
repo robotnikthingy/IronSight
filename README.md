@@ -39,10 +39,10 @@ Unlike CrackShot, WeaponsAPI will be an open sourced community effort, no worryi
 ## Example Configs
 These configs show how the AK-47 and Bazooka could be implemented in WeaponsAPI. I am using these configs as a base from which we can build the plugin around, so we can have a sense of how it will work. Any feedback is appreciated
 
-[Example Weapons Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleGunsConfig.yml)
+[Example Weapons Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/Implementation/src/main/resources/ExampleGunsConfig.yml)
 
-[Example Projectile Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleProjectileConfig.yml)
+[Example Projectile Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/Implementation/src/main/resources/ExampleProjectileConfig.yml)
 
-[Example Explosions Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleExplosionsConfig.yml)
+[Example Explosions Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/Implementation/src/main/resources/ExampleExplosionsConfig.yml)
 
-[Example Ammo Item Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/ExampleAmmoItemConfig)
+[Example Ammo Item Config](https://github.com/robotnikthingy/WeaponsAPI/blob/master/Implementation/src/main/resources/ExampleAmmoItemConfig)

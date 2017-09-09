@@ -17,7 +17,8 @@ AK-47_Projectile:
     FriendlyFire: true
   Events:
     OnHit_Entity: #what happens when the bullet hits a living entity
-      VictimActions: #actions which will only affect who was shot
+      Victim: #actions which will only affect who was shot
+        Actions:
         - ParticleEffect(SMOKE)
         
 AK-47_Grenade_Projectile:
@@ -36,9 +37,10 @@ AK-47_Grenade_Projectile:
     FriendlyFire: true
   Events:
     OnHit: #what happens when the grenade hits ANYTHING
-      SelfActions: #causes an explosion with a radius of 3
+      Self:
+        Actions: #causes an explosion with a radius of 3
         - Explosion(3) 
-      Requirements: #grenade wont explode unless its 5 blocks away from the shooter
+        Requirements: #grenade wont explode unless its 5 blocks away from the shooter
         - DistanceFromShooter(5) 
         
 HE_Rocket_Projectile:
@@ -58,7 +60,8 @@ HE_Rocket_Projectile:
     FriendlyFire: true
   Events:
     OnHit: #what happens when the grenade hits ANYTHING
-      SelfActions: #creates a custom explosion when it hits something
+      Self:
+        Actions: #creates a custom explosion when it hits something
         - CustomExplosion(BazookaExplosion) 
         
 AP_Rocket_Projectile:
@@ -78,7 +81,8 @@ AP_Rocket_Projectile:
     FriendlyFire: true
   Events:
     OnHit: #what happens when the grenade hits ANYTHING
-      SelfActions: #creates a custom explosion when it hits something
+      Self:
+        Actions: #creates a custom explosion when it hits something
         - CustomExplosion(AP_BazookaExplosion)
       VictimActions: #will do additional damage if the target is wearing armor
         - ArmorDamage(5) 

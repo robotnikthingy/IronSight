@@ -25,26 +25,29 @@ AK47:
           Reload_On_Switch: false
       Events:
         OnRightClickHold:
-          SelfActions:
+          Self:
+            Actions:
             - FireProjectile(AK-47_Projectile)
             - ParticleEffect(SMOKE)
             - PlaySound(AK-47_sound,1,1)
-          Options:
-            Delay_Between_Actions: 3 #this will limit the rate of fire
-            Cancel_Interactions: true #cancel interaction with blocks when held
-            Ammo_Per_action: 1
-          Requirements:
-            - Requires_Ammo(true)
+            Options:
+              Delay_Between_Actions: 3 #this will limit the rate of fire
+              Cancel_Interactions: true #cancel interaction with blocks when held
+              Ammo_Per_action: 1
+            Requirements:
+              - Requires_Ammo(true)
         OnLeftClick:
-          SelfActions:
+          Self:
+            Actions:
             - Zoom(5)
-          Options:
-            Cooldown: 10
-          Requirements:
-            Required_Attachments:
-              - Scope
+            Options:
+              Cooldown: 10
+            Requirements:
+              Required_Attachments:
+                - Scope
         OnReload:
-          SelfActions:
+          Self:
+            Actions:
             - PlaySound(AK-47_open,1,1)
             - delay(100) #causes a 100 tick delay before the next mechanicAction in the list happens
             - PlaySound(AK-47_close,1,1)
@@ -67,15 +70,16 @@ AK47:
         - Required_Items(AK-47_Grenade_Launcher) #if player does not have this attachment then this will not be shown in the hotbar
       Events:
         OnRightClick:
-          SelfActions:
+          Self:
+            Actions:
             - Fire_Projectile(AK-47_Grenade_Projectile)
             - ParticleEffect(SMOKE)
             - PlaySound(AK-47_grenade_sound,1,1)
-          Requirements:
-            - Requires_Ammo(true)
-          Options:
-            Cancel_Interactions: true
-            Ammo_Per_action: 1
+            Requirements:
+              - Requires_Ammo(true)
+            Options:
+              Cancel_Interactions: true
+              Ammo_Per_action: 1
         OnReload:
           SelfActions:
             - PlaySound(AK-47_open,1,1)
@@ -122,15 +126,16 @@ Bazooka:
           Reload_On_Switch: true #When switched to this loadout, weapon will need to be reloaded
       Events:
         OnRightClick:
-          SelfActions:
+          Self:
+            Actions:
             - Fire_Projectile(HE_Rocket_Projectile)
             - ParticleEffect(SMOKE)
             - PlaySound(Bazooka_Fire_sound,1,1)
-          Options:
-            Cancel_Interactions: true
-            Ammo_Per_action: 1
-          Requirements:
-            Requires_Ammo: true
+            Options:
+              Cancel_Interactions: true
+              Ammo_Per_action: 1
+            Requirements:
+              Requires_Ammo: true
         OnReload:
           SelfActions:
             - PlaySound(Bazooka_Load,1,1)
@@ -154,17 +159,19 @@ Bazooka:
           Reload_On_Switch: true #When switched to this loadout, weapon will need to be reloaded
       Events:
         OnRightClick:
-          SelfActions:
+          Self:
+            Actions:
             - Fire_Projectile(AP_Rocket_Projectile)
             - ParticleEffect(SMOKE)
             - PlaySound(Bazooka_Fire_sound,1,1)
-          Options:
-            Cancel_Interactions: true
-            Ammo_Per_action: 1
-          Requirements:
-            Requires_Ammo: true
+            Options:
+              Cancel_Interactions: true
+              Ammo_Per_action: 1
+            Requirements:
+              Requires_Ammo: true
         OnReload:
-          SelfActions:
+          Self:
+            Actions:
             - PlaySound(Bazooka_Load,1,1)
             - delay(100)
             - PlaySound(Bazooka_Ready,1,1)
@@ -179,5 +186,6 @@ Bazooka:
         Cooldown: 500
       Events:
         OnSelect:
-          SelfActions:
+          Self:
+            Actions:
           - ModifyReload(0.5,300) #reduces reload by half for 15 seconds
