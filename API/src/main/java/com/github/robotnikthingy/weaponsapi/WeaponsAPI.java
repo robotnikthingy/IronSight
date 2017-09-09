@@ -30,7 +30,7 @@ public class WeaponsAPI {
      * @throws ExceptionInInitializerError if the API has already been set
      */
     public static void setAPI(IWeaponsAPI weaponsAPI) {
-        if (weaponsAPI != null)
+        if (WeaponsAPI.weaponsAPI != null)
             throw new ExceptionInInitializerError("API already initialized.");
         
         WeaponsAPI.weaponsAPI = weaponsAPI;
