@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Arrays;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
+import com.github.robotnikthingy.weaponsapi.mechanic.MechanicParser;
 import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.weapon.WeaponManager;
 
@@ -28,6 +30,7 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     public static final File FOLDER_EXPLOSIONS = new File(FOLDER_PLUGIN, "/Explosions");
 
     private WeaponManager weaponManager;
+    private MechanicParser mechanicParser;
     
     @Override
     public void onEnable() {
@@ -37,6 +40,7 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     	
     	// Load necessary variables
     	this.weaponManager = new WeaponManager();
+    	this.mechanicParser = new MechanicParser();
     	
     	// Setup the API. Ready for use
         WeaponsAPI.setAPI(this);
@@ -55,6 +59,11 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     public IWeaponManager getWeaponManager() {
 		return weaponManager;
 	}
+    
+    @Override
+    public IMechanicParser getMechanicParser() {
+    	return mechanicParser;
+    }
     
     @Override
     public WeaponsPlayer getPlayer(Player player) {

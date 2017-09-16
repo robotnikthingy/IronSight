@@ -3,6 +3,7 @@ package com.github.robotnikthingy.weaponsapi.projectile;
 import java.io.File;
 
 import com.github.robotnikthingy.weaponsapi.ammo.Ammunition;
+import com.github.robotnikthingy.weaponsapi.mechanic.data.IMechanicDataHandler;
 import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
 import com.github.robotnikthingy.weaponsapi.weapon.WeaponThrowable;
 
@@ -47,6 +48,11 @@ public class ConfigurableProjectile extends ConfigurableObject implements Weapon
 	@Override
 	public int getAmmo() {
 		return 0; // TODO: Get current ammo count
+	}
+	
+	@Override
+	public IMechanicDataHandler getReloadDataHandler() {
+		return null; // TODO: Return a data handler implementation
 	}
 
 	@Override

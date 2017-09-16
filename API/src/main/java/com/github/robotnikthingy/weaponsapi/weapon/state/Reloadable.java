@@ -1,6 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.weapon.state;
 
 import com.github.robotnikthingy.weaponsapi.ammo.Ammunition;
+import com.github.robotnikthingy.weaponsapi.mechanic.data.IMechanicDataHandler;
 
 import org.bukkit.entity.Player;
 
@@ -33,6 +34,13 @@ public interface Reloadable {
 	 * @return the amount of loaded ammunition
 	 */
 	public int getAmmo();
+	
+	/**
+	 * Get the reload-related mechanic data handler
+	 * 
+	 * @return the reload data handler
+	 */
+	public IMechanicDataHandler getReloadDataHandler();
 	
 	/**
 	 * Reload this weapon's ammunition clip
