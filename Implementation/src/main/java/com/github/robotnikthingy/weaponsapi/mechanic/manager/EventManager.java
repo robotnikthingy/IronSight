@@ -1,4 +1,4 @@
-package com.github.robotnikthingy.weaponsapi.action.manager;
+package com.github.robotnikthingy.weaponsapi.mechanic.manager;
 
 /**
  * Manages all config related events used by the plugin (i.e. OnReload, 

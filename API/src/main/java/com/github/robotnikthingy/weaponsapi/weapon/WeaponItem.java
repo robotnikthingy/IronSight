@@ -1,5 +1,6 @@
 package com.github.robotnikthingy.weaponsapi.weapon;
 
+import com.github.robotnikthingy.weaponsapi.mechanic.data.IMechanicDataHandler;
 import com.github.robotnikthingy.weaponsapi.weapon.state.Reloadable;
 import com.github.robotnikthingy.weaponsapi.weapon.state.Shootable;
 
@@ -18,5 +19,12 @@ public interface WeaponItem extends Weapon, Shootable, Reloadable {
 	 * @return the associated item
 	 */
 	public ItemStack getItem();
+	
+	/**
+	 * Get the selection-related mechanic data handler
+	 * 
+	 * @return the reload data handler
+	 */
+	public IMechanicDataHandler getSelectionDataHandler();
 	
 }

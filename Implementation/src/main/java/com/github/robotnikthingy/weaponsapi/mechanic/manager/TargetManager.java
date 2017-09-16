@@ -1,4 +1,4 @@
-package com.github.robotnikthingy.weaponsapi.action.manager;
+package com.github.robotnikthingy.weaponsapi.mechanic.manager;
 
 /**
  * Manages the targets for actions as defined in the config files. 

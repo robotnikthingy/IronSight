@@ -1,6 +1,7 @@
 package com.github.robotnikthingy.weaponsapi;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
 import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
 
 import org.bukkit.entity.Player;
@@ -20,6 +21,15 @@ public interface IWeaponsAPI {
 	 * @return the weapon manager
 	 */
 	public IWeaponManager getWeaponManager();
+	
+	/**
+	 * Get the mechanic parser used to parse mechanics from the weapon configuration
+	 * files. Any custom mechanics should be registered here in order to be
+	 * recognised by the plugin when parsing weapons and their options
+	 * 
+	 * @return the mechanic parser
+	 */
+	public IMechanicParser getMechanicParser();
 	
 	/**
 	 * Get a WeaponsPlayer instance given a Bukkit {@link Player}
