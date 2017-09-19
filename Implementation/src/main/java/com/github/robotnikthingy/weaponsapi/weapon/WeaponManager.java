@@ -3,11 +3,14 @@ package com.github.robotnikthingy.weaponsapi.weapon;
 import java.io.File;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import com.github.robotnikthingy.weaponsapi.WeaponsPlugin;
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
 import com.google.common.collect.ImmutableSet;
+
+import org.apache.commons.lang.Validate;
 
 /**
  * Keeps track of and manages all weapons registered by the plugin
@@ -24,13 +27,16 @@ public class WeaponManager implements IWeaponManager {
     }
 
     @Override
-    public void reloadWeapons(){
+    public void reloadWeapons() {
         this.weapons.clear();
         this.loadWeapons(WeaponsPlugin.FOLDER_WEAPONS);
     }
     
     @Override
     public void registerWeapon(Weapon weapon) {
+    	if (weapon == null) return;
+    	Validate.isTrue(!weapons.contains(weapon), "Cannot register identical weapons");
+    	
     	this.weapons.add(weapon);
     }
     
@@ -40,21 +46,40 @@ public class WeaponManager implements IWeaponManager {
     }
 
     @Override
-    public Weapon getWeapon(String weaponName){
+    public Weapon getWeapon(String weaponName) {
     	return weapons.stream()
     		.filter(w -> w.getName().equals(weaponName))
     		.findFirst().orElse(null);
     }
     
     @Override
-    public boolean weaponExists(String weaponName) {
+    public <T extends Weapon> T getWeapon(Class<T> weapon) {
+    	return (weapon != null 
+    			? weapon.cast(weapons.stream()
+    					.filter(w -> weapon.isInstance(w))
+    					.findFirst().orElse(null)) 
+    			: null);
+    }
+    
+    @Override
+    public boolean isRegisteredWeapon(String weaponName) {
     	return weapons.stream().anyMatch(w -> w.getName().equals(weaponName));
+    }
+    
+    @Override
+    public <T extends Weapon> boolean isRegisteredWeapon(Class<T> weapon) {
+    	return (weapon != null ? weapons.stream().anyMatch(weapon::isInstance) : null);
     }
     
     @Override
     public Collection<Weapon> getWeapons() {
 		return ImmutableSet.copyOf(weapons);
 	}
+    
+    @Override
+    public Iterator<Weapon> weaponIterator() {
+    	return weapons.iterator();
+    }
     
     @Override
     public void clearWeapons() {
