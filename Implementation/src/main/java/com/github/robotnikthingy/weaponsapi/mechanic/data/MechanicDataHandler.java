@@ -32,6 +32,11 @@ public class MechanicDataHandler implements IMechanicDataHandler {
 	public boolean hasRequirement(MechanicRequirement requirement) {
 		return requirements.contains(requirement);
 	}
+	
+	@Override
+	public boolean hasRequirements() {
+		return requirements.size() >= 1;
+	}
 
 	@Override
 	public List<MechanicRequirement> getRequirements() {
@@ -52,6 +57,11 @@ public class MechanicDataHandler implements IMechanicDataHandler {
 	@Override
 	public boolean hasAction(MechanicAction action) {
 		return actions.contains(action);
+	}
+	
+	@Override
+	public boolean hasActions() {
+		return actions.size() >= 1;
 	}
 
 	@Override

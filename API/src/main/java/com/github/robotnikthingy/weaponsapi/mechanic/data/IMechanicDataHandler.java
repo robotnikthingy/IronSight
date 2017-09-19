@@ -36,6 +36,13 @@ public interface IMechanicDataHandler {
 	public boolean hasRequirement(MechanicRequirement requirement);
 	
 	/**
+	 * Check whether this data handler contains any requirements
+	 * 
+	 * @return true if at least 1 requirement. false if none
+	 */
+	public boolean hasRequirements();
+	
+	/**
 	 * Get a list of all requirements currently handled by this
 	 * data handler
 	 * 
@@ -65,6 +72,13 @@ public interface IMechanicDataHandler {
 	 * @return true if present, false otherwise
 	 */
 	public boolean hasAction(MechanicAction action);
+	
+	/**
+	 * Check whether this data handler contains any actions
+	 * 
+	 * @return true if at least 1 action. false if none
+	 */
+	public boolean hasActions();
 	
 	/**
 	 * Get a list of all callable actions currently handled
