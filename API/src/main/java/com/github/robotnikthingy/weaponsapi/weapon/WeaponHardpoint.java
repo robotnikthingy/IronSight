@@ -1,9 +1,10 @@
 package com.github.robotnikthingy.weaponsapi.weapon;
 
-import com.github.robotnikthingy.weaponsapi.weapon.state.Shootable;
-
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
+import com.github.robotnikthingy.weaponsapi.weapon.state.Shootable;
 
 /**
  * Represents a weapon located at a given {@link Location} in a world.
@@ -35,15 +36,16 @@ public interface WeaponHardpoint extends Weapon, Shootable {
 	 * 
 	 * @param player the new interacting player. null if no user is
 	 * handling the weapon
+	 * @return true if successful. false otherwise
 	 */
-	public void setUser(Player player);
+	public boolean setUser(IWeaponsPlayer player);
 	
 	/**
 	 * Get the user interacting with this weapon hardpoint
 	 * 
 	 * @return the interacting player. null if no user
 	 */
-	public Player getUser();
+	public IWeaponsPlayer getUser();
 	
 	/**
 	 * Check whether redstone should activate this weapon and invoke

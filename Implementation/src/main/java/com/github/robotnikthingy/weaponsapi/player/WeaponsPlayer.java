@@ -42,9 +42,10 @@ public class WeaponsPlayer implements IWeaponsPlayer {
 
 	@Override
 	public boolean setActiveHardpoint(WeaponHardpoint hardpoint) {
-		this.hardpoint = hardpoint;
-		this.hardpoint.setUser(player);
-		return true; // This should be based on the result of WeaponHardpoint#setUser()
+		boolean success = this.hardpoint.setUser(this);
+		if (success) this.hardpoint = hardpoint;
+		
+		return success;
 	}
 
 	@Override
