@@ -8,6 +8,7 @@ import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
 import com.github.robotnikthingy.weaponsapi.weapon.WeaponThrowable;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Represents a throwable projectile created using configuration files
@@ -33,6 +34,11 @@ public class ConfigurableProjectile extends ConfigurableObject implements Weapon
 	@Override
 	public double getDamage() {
 		return 0; // TODO Configurable damage values
+	}
+	
+	@Override
+	public ItemStack getItem() {
+		return null; // TODO: Representing ItemStack
 	}
 
 	@Override

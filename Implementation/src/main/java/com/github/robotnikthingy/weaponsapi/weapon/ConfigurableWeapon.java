@@ -2,6 +2,8 @@ package com.github.robotnikthingy.weaponsapi.weapon;
 
 import java.io.File;
 
+import org.bukkit.inventory.ItemStack;
+
 import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
 
 /**
@@ -28,6 +30,11 @@ public class ConfigurableWeapon extends ConfigurableObject implements Weapon {
     @Override
     public double getDamage() {
     	return 0; // TODO Configurable damage values
+    }
+    
+    @Override
+    public ItemStack getItem() {
+    	return null; // TODO: Representing ItemStack
     }
 
 }

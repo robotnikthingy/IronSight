@@ -1,5 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.weapon;
 
+import org.bukkit.inventory.ItemStack;
+
 /**
  * Represents a basic weapon without any state
  * 
@@ -20,5 +22,13 @@ public interface Weapon {
 	 * @return the weapon damage
 	 */
 	public double getDamage();
+	
+	/**
+	 * Get the item representation of this weapon if any. If no
+	 * item representation exists, this method will simply return null
+	 * 
+	 * @return the representing item. null if none
+	 */
+	public ItemStack getItem();
 	
 }
