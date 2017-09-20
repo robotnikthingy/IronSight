@@ -1,5 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.weapon.state;
 
+import java.util.Map;
+
 import com.github.robotnikthingy.weaponsapi.attachment.Attachment;
 import com.github.robotnikthingy.weaponsapi.attachment.AttachmentPosition;
 
@@ -18,6 +20,49 @@ public interface Attachable {
 	 * @return all supported attachment positions
 	 */
 	public AttachmentPosition[] getSupportedAttachments();
+	
+	/**
+	 * Get the attachment positioned at the given {@link AttachmentPosition}
+	 * 
+	 * @param position the position to retrieve
+	 * @return the attachment at the position. null if none
+	 */
+	public Attachment getAttachment(AttachmentPosition position);
+	
+	/**
+	 * Check whether an attachment is positioned somewhere on the weapon
+	 * 
+	 * @param attachment the attachment to check
+	 * @return true if attached, false otherwise
+	 */
+	public boolean hasAttachment(Attachment attachment);
+	
+	/**
+	 * Check whether an attachment is positioned at the specified position
+	 * 
+	 * @param position the position to check
+	 * @return true if an attachment is present. false otherwise
+	 */
+	public boolean hasAttachment(AttachmentPosition position);
+	
+	/**
+	 * Check whether a specific attachment is positioned at the specified position
+	 * 
+	 * @param position the position to check
+	 * @param attachment the attachment to check
+	 * 
+	 * @return true if the attachment is at the given position. false otherwise
+	 */
+	public boolean hasAttachment(AttachmentPosition position, Attachment attachment);
+	
+	/**
+	 * Get a Map of all attachments for this attachable weapon. The state of
+	 * immutability or its null state cannot be verified and depends on the
+	 * various implementations
+	 * 
+	 * @return the attachments on this object
+	 */
+	public Map<AttachmentPosition, Attachment> getAttachments();
 	
 	/**
 	 * Check whether a given attachment can be attached to this weapon. This
