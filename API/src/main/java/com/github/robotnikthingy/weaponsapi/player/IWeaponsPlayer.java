@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
  * 
  * @author Parker Hawke - 2008Choco
  */
-public interface WeaponsPlayer {
+public interface IWeaponsPlayer {
 	
 	/**
 	 * Get the underlying Bukkit {@link Player} representing this WeaponsPlayer

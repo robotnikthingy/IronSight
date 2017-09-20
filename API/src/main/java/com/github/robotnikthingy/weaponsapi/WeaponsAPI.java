@@ -1,10 +1,13 @@
 package com.github.robotnikthingy.weaponsapi;
 
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
 import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
-import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
-
-import org.bukkit.entity.Player;
+import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
 
 /**
  * The main class bridging the API and WeaponsAPI plugin implementation.
@@ -76,8 +79,20 @@ public class WeaponsAPI {
 	 * @param player the player to retrieve an instance of
 	 * @return the related WeaponsPlayer instance
 	 */
-	public static WeaponsPlayer getPlayer(Player player) {
+	public static IWeaponsPlayer getPlayer(Player player) {
 		return weaponsAPI.getPlayer(player);
+	}
+	
+	/**
+	 * Get a WeaponsPlayer instance given a Bukkit Player's UUID. If no WeaponsPlayer
+	 * instance is associated with the (valid) player, a new instance will be created
+	 * 
+	 * @param player the UUID of the player to retrieve an instance of
+	 * @return the related WeaponsPlayer instance
+	 */
+	public static IWeaponsPlayer getPlayer(UUID uuid) {
+		Player player = Bukkit.getPlayer(uuid);
+		return (player != null ? getPlayer(player) : null);
 	}
 
 }

@@ -2,7 +2,7 @@ package com.github.robotnikthingy.weaponsapi;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
 import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
-import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
+import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
 
 import org.bukkit.entity.Player;
 
@@ -32,11 +32,12 @@ public interface IWeaponsAPI {
 	public IMechanicParser getMechanicParser();
 	
 	/**
-	 * Get a WeaponsPlayer instance given a Bukkit {@link Player}
+	 * Get a WeaponsPlayer instance given a Bukkit {@link Player}. If no WeaponsPlayer
+	 * instance is associated with the player, a new instance will be created
 	 * 
 	 * @param player the player to retrieve an instance of
 	 * @return the related WeaponsPlayer instance
 	 */
-	public WeaponsPlayer getPlayer(Player player);
+	public IWeaponsPlayer getPlayer(Player player);
 	
 }

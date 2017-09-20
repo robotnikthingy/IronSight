@@ -2,15 +2,19 @@ package com.github.robotnikthingy.weaponsapi;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
 import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
 import com.github.robotnikthingy.weaponsapi.mechanic.MechanicParser;
+import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.weapon.WeaponManager;
-
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * The main JavaPlugin class for the WeaponsAPI plugin implementation
@@ -28,6 +32,8 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     public static final File FOLDER_ATTACHMENTS = new File(FOLDER_PLUGIN, "/Attachments");
     public static final File FOLDER_ITEMS = new File(FOLDER_PLUGIN, "/Items");
     public static final File FOLDER_EXPLOSIONS = new File(FOLDER_PLUGIN, "/Explosions");
+    
+    private final Map<UUID, WeaponsPlayer> players = new HashMap<>();
 
     private WeaponManager weaponManager;
     private MechanicParser mechanicParser;
@@ -66,8 +72,8 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     }
     
     @Override
-    public WeaponsPlayer getPlayer(Player player) {
-    	return null; // TODO: Return a WeaponsPlayer implementation from a Map
+    public IWeaponsPlayer getPlayer(Player player) {
+    	return players.computeIfAbsent(player.getUniqueId(), p -> new WeaponsPlayer(player));
     }
     
     /**
