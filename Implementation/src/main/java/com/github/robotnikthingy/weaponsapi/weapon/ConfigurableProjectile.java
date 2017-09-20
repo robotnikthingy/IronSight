@@ -1,4 +1,4 @@
-package com.github.robotnikthingy.weaponsapi.projectile;
+package com.github.robotnikthingy.weaponsapi.weapon;
 
 import java.io.File;
 

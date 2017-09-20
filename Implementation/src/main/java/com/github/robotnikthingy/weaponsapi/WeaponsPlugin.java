@@ -10,11 +10,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.manager.WeaponManager;
 import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
 import com.github.robotnikthingy.weaponsapi.mechanic.MechanicParser;
 import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
-import com.github.robotnikthingy.weaponsapi.weapon.WeaponManager;
 
 /**
  * The main JavaPlugin class for the WeaponsAPI plugin implementation
