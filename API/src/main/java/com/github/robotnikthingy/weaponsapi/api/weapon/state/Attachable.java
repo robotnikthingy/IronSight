@@ -22,6 +22,37 @@ public interface Attachable {
 	public AttachmentPosition[] getSupportedAttachments();
 	
 	/**
+	 * Add an attachment to this weapon at the given position. Attachment may
+	 * fail if the position is already taken, or the position is not supported
+	 * 
+	 * @param position the position to place the attachment
+	 * @param attachment the attachment to add
+	 * 
+	 * @return true if successful, false otherwise
+	 */
+	public boolean addAttachment(AttachmentPosition position, Attachment attachment);
+	
+	/**
+	 * Forcibly set an attachment to this weapon at the given position regardless
+	 * of any existing attachments. This method may still fail and return false 
+	 * if the position specified is not supported
+	 * 
+	 * @param position the position to place the attachment
+	 * @param attachment the attachment to set
+	 * 
+	 * @return true if successful, false otherwise
+	 */
+	public boolean setAttachment(AttachmentPosition position, Attachment attachment);
+	
+	/**
+	 * Remove the attachment from a given position if one is present
+	 * 
+	 * @param position the position to remove the attachment from
+	 * @return the removed attachment. null if none removed
+	 */
+	public Attachment removeAttachment(AttachmentPosition position);
+	
+	/**
 	 * Get the attachment positioned at the given {@link AttachmentPosition}
 	 * 
 	 * @param position the position to retrieve
