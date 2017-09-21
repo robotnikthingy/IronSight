@@ -29,7 +29,7 @@ public class RequirementExample extends AbstractRequirement {
 	
 	@Override
 	public boolean isMet(MechanicEnvironment environment) {
-		return specificParameter1 && (specificParameter2 > 0) && environment.getPlayer().isFlying();
+		return specificParameter1 && (specificParameter2 > 0) && environment.getPlayer().getBukkitPlayer().isFlying();
 	}
 	
 }

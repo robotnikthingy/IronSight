@@ -2,9 +2,8 @@ package com.github.robotnikthingy.weaponsapi.mechanic.data;
 
 import com.github.robotnikthingy.weaponsapi.mechanic.MechanicAction;
 import com.github.robotnikthingy.weaponsapi.mechanic.MechanicRequirement;
+import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
-
-import org.bukkit.entity.Player;
 
 /**
  * Represents an environment to be passed around mechanic-based methods within
@@ -13,9 +12,9 @@ import org.bukkit.entity.Player;
  * 
  * @author Parker Hawke - 2008Choco
  */
-public class MechanicEnvironment {
+public final class MechanicEnvironment {
 	
-	private final Player player;
+	private final IWeaponsPlayer player;
 	private final Weapon weapon;
 	
 	/**
@@ -24,17 +23,17 @@ public class MechanicEnvironment {
 	 * @param player the player that participated in this situation
 	 * @param weapon the weapon used in the situation
 	 */
-	public MechanicEnvironment(Player player, Weapon weapon) {
+	public MechanicEnvironment(IWeaponsPlayer player, Weapon weapon) {
 		this.player = player;
 		this.weapon = weapon;
 	}
 	
 	/**
-	 * Get the participating Player in this environment
+	 * Get the participating {@link IWeaponsPlayer} in this environment
 	 * 
-	 * @return the participating Player
+	 * @return the participating player
 	 */
-	public Player getPlayer() {
+	public IWeaponsPlayer getPlayer() {
 		return player;
 	}
 	
