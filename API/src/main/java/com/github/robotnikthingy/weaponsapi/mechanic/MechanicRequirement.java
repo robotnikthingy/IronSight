@@ -23,9 +23,10 @@ public interface MechanicRequirement extends Mechanic {
 	
 	/**
 	 * Get this mechanic requirement as a predicate function. By default,
-	 * this method implementation will return the result of {@link #isMet(Object)}
-	 * as a Predicate, but if possible, this method should be overridden
-	 * to simplify the Predicate as much as possible
+	 * this method implementation will return the result of
+	 * {@link #isMet(MechanicEnvironment)} as a Predicate, but if possible,
+	 * this method should be overridden to simplify the Predicate as much 
+	 * as possible
 	 * 
 	 * @return the resulting predicate
 	 */
