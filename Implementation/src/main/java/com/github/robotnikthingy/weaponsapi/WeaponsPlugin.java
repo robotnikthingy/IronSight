@@ -13,9 +13,11 @@ import com.github.robotnikthingy.weaponsapi.api.IWeaponsAPI;
 import com.github.robotnikthingy.weaponsapi.api.WeaponsAPI;
 import com.github.robotnikthingy.weaponsapi.api.manager.IWeaponManager;
 import com.github.robotnikthingy.weaponsapi.api.mechanic.IMechanicParser;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.data.IMechanicDataHandler;
 import com.github.robotnikthingy.weaponsapi.api.player.IWeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.manager.WeaponManager;
 import com.github.robotnikthingy.weaponsapi.mechanic.MechanicParser;
+import com.github.robotnikthingy.weaponsapi.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
 
 /**
@@ -76,6 +78,11 @@ public class WeaponsPlugin extends JavaPlugin implements IWeaponsAPI {
     @Override
     public IWeaponsPlayer getPlayer(Player player) {
     	return players.computeIfAbsent(player.getUniqueId(), p -> new WeaponsPlayer(player));
+    }
+    
+    @Override
+    public IMechanicDataHandler createMechanicDataHandler() {
+    	return new MechanicDataHandler();
     }
     
     /**

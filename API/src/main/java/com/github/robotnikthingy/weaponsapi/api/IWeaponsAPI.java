@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 
 import com.github.robotnikthingy.weaponsapi.api.manager.IWeaponManager;
 import com.github.robotnikthingy.weaponsapi.api.mechanic.IMechanicParser;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.data.IMechanicDataHandler;
 import com.github.robotnikthingy.weaponsapi.api.player.IWeaponsPlayer;
 
 /**
@@ -39,5 +40,13 @@ public interface IWeaponsAPI {
 	 * @return the related WeaponsPlayer instance
 	 */
 	public IWeaponsPlayer getPlayer(Player player);
+	
+	/**
+	 * Create a new instance of {@link IMechanicDataHandler} for use in weapons, 
+	 * ammunition or any other class that requires data handlers
+	 * 
+	 * @return a new data handler
+	 */
+	public IMechanicDataHandler createMechanicDataHandler();
 	
 }
