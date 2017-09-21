@@ -1,7 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.mechanic.defaults.action;
 
+import com.github.robotnikthingy.weaponsapi.api.mechanic.data.MechanicEnvironment;
 import com.github.robotnikthingy.weaponsapi.mechanic.AbstractAction;
-import com.github.robotnikthingy.weaponsapi.mechanic.data.MechanicEnvironment;
 
 /**
  * The "fireProjectile" action which will be used to fire projectiles

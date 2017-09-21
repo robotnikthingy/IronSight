@@ -2,10 +2,10 @@ package com.github.robotnikthingy.weaponsapi.weapon;
 
 import java.io.File;
 
-import com.github.robotnikthingy.weaponsapi.ammo.Ammunition;
-import com.github.robotnikthingy.weaponsapi.mechanic.data.IMechanicDataHandler;
+import com.github.robotnikthingy.weaponsapi.api.ammo.Ammunition;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.data.IMechanicDataHandler;
+import com.github.robotnikthingy.weaponsapi.api.weapon.WeaponThrowable;
 import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
-import com.github.robotnikthingy.weaponsapi.weapon.WeaponThrowable;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

@@ -3,8 +3,9 @@ package com.github.robotnikthingy.weaponsapi.mechanic.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.robotnikthingy.weaponsapi.mechanic.MechanicAction;
-import com.github.robotnikthingy.weaponsapi.mechanic.MechanicRequirement;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.MechanicAction;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.MechanicRequirement;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.data.IMechanicDataHandler;
 import com.google.common.collect.ImmutableList;
 
 /**

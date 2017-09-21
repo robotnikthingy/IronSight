@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 
+import com.github.robotnikthingy.weaponsapi.api.mechanic.IMechanicParser;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.Mechanic;
+
 /**
  * Represents an implementation of {@link IMechanicParser}
  * 

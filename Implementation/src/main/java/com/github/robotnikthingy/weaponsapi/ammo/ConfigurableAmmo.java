@@ -2,8 +2,9 @@ package com.github.robotnikthingy.weaponsapi.ammo;
 
 import java.io.File;
 
+import com.github.robotnikthingy.weaponsapi.api.ammo.Ammunition;
+import com.github.robotnikthingy.weaponsapi.api.weapon.Weapon;
 import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
-import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
 
 import org.bukkit.inventory.ItemStack;
 

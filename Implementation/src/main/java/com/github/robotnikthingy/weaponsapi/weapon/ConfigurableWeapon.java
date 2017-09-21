@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.bukkit.inventory.ItemStack;
 
+import com.github.robotnikthingy.weaponsapi.api.weapon.Weapon;
 import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
 
 /**

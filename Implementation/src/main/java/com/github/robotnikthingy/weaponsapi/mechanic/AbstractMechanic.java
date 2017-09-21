@@ -3,6 +3,9 @@ package com.github.robotnikthingy.weaponsapi.mechanic;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+import com.github.robotnikthingy.weaponsapi.api.mechanic.Mechanic;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.MechanicType;
+
 /**
  * Represents the foundation of an action from which actions, requirements,
  * events and targets will inherit

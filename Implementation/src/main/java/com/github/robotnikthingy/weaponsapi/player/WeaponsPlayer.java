@@ -7,10 +7,11 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.robotnikthingy.weaponsapi.ammo.Ammunition;
-import com.github.robotnikthingy.weaponsapi.hitbox.Hitbox;
-import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
-import com.github.robotnikthingy.weaponsapi.weapon.WeaponHardpoint;
+import com.github.robotnikthingy.weaponsapi.api.ammo.Ammunition;
+import com.github.robotnikthingy.weaponsapi.api.hitbox.Hitbox;
+import com.github.robotnikthingy.weaponsapi.api.player.IWeaponsPlayer;
+import com.github.robotnikthingy.weaponsapi.api.weapon.Weapon;
+import com.github.robotnikthingy.weaponsapi.api.weapon.WeaponHardpoint;
 
 /**
  * An implementation of {@link IWeaponsPlayer}

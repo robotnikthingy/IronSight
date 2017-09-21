@@ -2,8 +2,10 @@ package com.github.robotnikthingy.weaponsapi.attachment;
 
 import java.io.File;
 
+import com.github.robotnikthingy.weaponsapi.api.attachment.Attachment;
+import com.github.robotnikthingy.weaponsapi.api.attachment.AttachmentPosition;
+import com.github.robotnikthingy.weaponsapi.api.weapon.Weapon;
 import com.github.robotnikthingy.weaponsapi.utils.ConfigurableObject;
-import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
 
 import org.bukkit.entity.Player;
 

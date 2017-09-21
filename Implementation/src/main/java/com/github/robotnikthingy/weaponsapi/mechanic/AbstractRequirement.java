@@ -1,5 +1,8 @@
 package com.github.robotnikthingy.weaponsapi.mechanic;
 
+import com.github.robotnikthingy.weaponsapi.api.mechanic.MechanicRequirement;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.MechanicType;
+
 /**
  * Represents an abstract implementation of {@link MechanicRequirement} and 
  * {@link AbstractMechanic}

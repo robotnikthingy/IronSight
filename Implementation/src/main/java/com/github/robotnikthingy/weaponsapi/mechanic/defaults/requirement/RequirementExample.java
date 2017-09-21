@@ -1,7 +1,7 @@
 package com.github.robotnikthingy.weaponsapi.mechanic.defaults.requirement;
 
+import com.github.robotnikthingy.weaponsapi.api.mechanic.data.MechanicEnvironment;
 import com.github.robotnikthingy.weaponsapi.mechanic.AbstractRequirement;
-import com.github.robotnikthingy.weaponsapi.mechanic.data.MechanicEnvironment;
 
 /**
  * This is an example to demonstrate how requirements will function.

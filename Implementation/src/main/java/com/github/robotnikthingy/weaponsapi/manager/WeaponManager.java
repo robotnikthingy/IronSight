@@ -7,9 +7,9 @@ import java.util.Iterator;
 import java.util.Set;
 
 import com.github.robotnikthingy.weaponsapi.WeaponsPlugin;
-import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.api.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.api.weapon.Weapon;
 import com.github.robotnikthingy.weaponsapi.weapon.ConfigurableWeapon;
-import com.github.robotnikthingy.weaponsapi.weapon.Weapon;
 import com.google.common.collect.ImmutableSet;
 
 import org.apache.commons.lang.Validate;

@@ -9,11 +9,13 @@ import java.util.UUID;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.github.robotnikthingy.weaponsapi.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.api.IWeaponsAPI;
+import com.github.robotnikthingy.weaponsapi.api.WeaponsAPI;
+import com.github.robotnikthingy.weaponsapi.api.manager.IWeaponManager;
+import com.github.robotnikthingy.weaponsapi.api.mechanic.IMechanicParser;
+import com.github.robotnikthingy.weaponsapi.api.player.IWeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.manager.WeaponManager;
-import com.github.robotnikthingy.weaponsapi.mechanic.IMechanicParser;
 import com.github.robotnikthingy.weaponsapi.mechanic.MechanicParser;
-import com.github.robotnikthingy.weaponsapi.player.IWeaponsPlayer;
 import com.github.robotnikthingy.weaponsapi.player.WeaponsPlayer;
 
 /**
