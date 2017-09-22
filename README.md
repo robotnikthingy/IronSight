@@ -1,4 +1,4 @@
-# Weapons API
+# IronSight
 
 WeaponsAPI is a collaborative community effort to replace the aging, closed source, and abandoned Crackshot plugin. The plugin will allow server admins to create a variety of weapons of all kinds, and provide much greater flexibilty using a system of modules and events. The plugin will provide more in depth options and configuration using a system similar to MythicMobs and Crackshot.
 
