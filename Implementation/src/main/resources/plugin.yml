@@ -1,5 +1,5 @@
-name: WeaponsAPI
-main: com.github.robotnikthingy.weaponsapi.WeaponsAPIPlugin
+name: IronSight
+main: com.github.robotnikthingy.ironsight.IronSightPlugin
 version: 1.0.0
 description: Used to create and manage weapons of all types
 authors: [Robotnikman, 2008Choco, ysl3000]
