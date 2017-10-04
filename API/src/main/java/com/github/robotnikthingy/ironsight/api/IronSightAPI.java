@@ -1,11 +1,16 @@
 package com.github.robotnikthingy.ironsight.api;
 
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
+
+import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
+import com.github.robotnikthingy.ironsight.api.bullet.Bullet;
 import com.github.robotnikthingy.ironsight.api.manager.WeaponManager;
 import com.github.robotnikthingy.ironsight.api.mechanic.MechanicParser;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
-
-import org.bukkit.entity.Player;
+import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
 
 /**
  * Contains various methods to bridge common features between API and 
@@ -48,5 +53,26 @@ public interface IronSightAPI {
 	 * @return a new data handler
 	 */
 	public MechanicDataHandler createMechanicDataHandler();
+	
+	/**
+	 * Create a new Bullet and add it to the world
+	 * 
+	 * @param weapon the weapon to which this bullet originated
+	 * @param ammunition the belonging ammunition
+	 * @param shooter the player that shot the weapon
+	 * @param location the location of the bullet
+	 * @param initialVelocity the initial velocity of the bullet
+	 */
+	public Bullet createBullet(Weapon weapon, Ammunition ammunition, IronSightPlayer shooter, Location location, Vector initialVelocity);
+	
+	/**
+	 * Create a new Bullet and add it to the world with a velocity of 0
+	 * 
+	 * @param weapon the weapon to which this bullet originated
+	 * @param ammunition the belonging ammunition
+	 * @param shooter the player that shot the weapon
+	 * @param location the location of the bullet
+	 */
+	public Bullet createBullet(Weapon weapon, Ammunition ammunition, IronSightPlayer shooter, Location location);
 	
 }

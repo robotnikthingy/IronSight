@@ -1,14 +1,14 @@
 package com.github.robotnikthingy.ironsight.api.bullet;
 
-import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
-import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
-import com.github.robotnikthingy.ironsight.api.weapon.state.Shootable;
-
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
+import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
+import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
+import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
+
 /**
- * Represents a moving bullet fired from a {@link Shootable} weapon
+ * Represents a moving bullet fired from a {@link Weapon}
  * 
  * @author Parker Hawke - 2008Choco
  */
@@ -28,6 +28,28 @@ public interface Bullet {
 	 * @return the bullet velocity
 	 */
 	public Vector getVelocity();
+	
+	/**
+	 * Get the speed of this bullet. The speed is equal to the magnitude
+	 * of the bullet's velocity {@link Vector#length()}
+	 * 
+	 * @return the speed of the bullet
+	 */
+	public double getSpeed();
+	
+	/**
+	 * Set the location of this bullet
+	 * 
+	 * @param location the bullet location
+	 */
+	public void setLocation(Location location);
+	
+	/**
+	 * Get the location of this bullet
+	 * 
+	 * @return the current bullet location
+	 */
+	public Location getLocation();
 	
 	/**
 	 * Check whether this bullet penetrates through entities and continues
@@ -56,7 +78,7 @@ public interface Bullet {
 	 * 
 	 * @return the shooter. Can be null
 	 */
-	public Player getShooter();
+	public IronSightPlayer getShooter();
 	
 	/**
 	 * Check whether this bullet entity is still valid. A valid bullet
@@ -66,16 +88,5 @@ public interface Bullet {
 	 * @return the validity of the bullet
 	 */
 	public boolean isValid();
-	
-	/**
-	 * Get the speed of this bullet. The speed is equal to the magnitude
-	 * of the bullet's velocity {@link Vector#length()}
-	 * 
-	 * @return the speed of the bullet
-	 */
-	public default double getSpeed() {
-		if (!isValid()) return -0.0;
-		return getVelocity().length();
-	}
 	
 }

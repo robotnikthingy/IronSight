@@ -2,13 +2,18 @@ package com.github.robotnikthingy.ironsight.api;
 
 import java.util.UUID;
 
+import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
+import com.github.robotnikthingy.ironsight.api.bullet.Bullet;
 import com.github.robotnikthingy.ironsight.api.manager.WeaponManager;
 import com.github.robotnikthingy.ironsight.api.mechanic.MechanicParser;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
+import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 /**
  * The main class bridging the API and IronSight plugin implementation.
@@ -104,6 +109,32 @@ public class IronSight {
 	 */
 	public static MechanicDataHandler createMechanicDataHandler() {
 		return ironsightAPI.createMechanicDataHandler();
+	}
+	
+	/**
+	 * Create a new Bullet and add it to the world
+	 * 
+	 * @param weapon the weapon to which this bullet originated
+	 * @param ammunition the belonging ammunition
+	 * @param shooter the player that shot the weapon
+	 * @param location the location of the bullet
+	 * @param initialVelocity the initial velocity of the bullet
+	 */
+	public static Bullet createBullet(Weapon weapon, Ammunition ammunition, IronSightPlayer shooter, Location location, Vector initialVelocity) {
+		return ironsightAPI.createBullet(weapon, ammunition, shooter, location, initialVelocity);
+	}
+	
+	/**
+	 * Create a new Bullet and add it to the world with a velocity of 0
+	 * 
+	 * @param weapon the weapon to which this bullet originated
+	 * @param ammunition the belonging ammunition
+	 * @param shooter the player that shot the weapon
+	 * @param location the location of the bullet
+	 * @param initialVelocity the initial velocity of the bullet
+	 */
+	public static Bullet createBullet(Weapon weapon, Ammunition ammunition, IronSightPlayer shooter, Location location) {
+		return ironsightAPI.createBullet(weapon, ammunition, shooter, location);
 	}
 
 }

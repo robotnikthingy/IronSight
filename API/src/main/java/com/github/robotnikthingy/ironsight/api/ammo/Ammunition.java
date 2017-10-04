@@ -1,14 +1,13 @@
 package com.github.robotnikthingy.ironsight.api.ammo;
 
-import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
-import com.github.robotnikthingy.ironsight.api.weapon.state.Reloadable;
-import com.github.robotnikthingy.ironsight.api.weapon.state.Shootable;
-
 import org.bukkit.inventory.ItemStack;
+
+import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
+import com.github.robotnikthingy.ironsight.api.weapon.WeaponReloadable;
 
 /**
  * Represents a piece of ammunition as an item. Ammunition may be used
- * by {@link Shootable} and {@link Reloadable} weapons to shoot and
+ * by {@link Weapon} and {@link WeaponReloadable} weapons to shoot and
  * reload bullets respectively
  * 
  * @author Parker Hawke - 2008Choco

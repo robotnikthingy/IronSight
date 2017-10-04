@@ -1,16 +1,16 @@
-package com.github.robotnikthingy.ironsight.api.weapon.state;
+package com.github.robotnikthingy.ironsight.api.weapon;
+
+import org.bukkit.entity.Player;
 
 import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
-
-import org.bukkit.entity.Player;
 
 /**
  * Represents a reloadable weapon with a limited amount of ammunition
  * 
  * @author Parker Hawke - 2008Choco
  */
-public interface Reloadable {
+public interface WeaponReloadable extends Weapon {
 	
 	/**
 	 * Get the amount of ammunition that can be held in a clip
@@ -28,7 +28,7 @@ public interface Reloadable {
 	public int getMaxAmmo();
 	
 	/**
-	 * Get the current amount of ammunition loaded into the weapon,
+	 * Get the current amount of ammunition loaded into the weapon
 	 * ready to shoot
 	 * 
 	 * @return the amount of loaded ammunition

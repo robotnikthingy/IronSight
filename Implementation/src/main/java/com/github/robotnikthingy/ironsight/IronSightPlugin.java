@@ -6,15 +6,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
-import com.github.robotnikthingy.ironsight.api.IronSightAPI;
 import com.github.robotnikthingy.ironsight.api.IronSight;
+import com.github.robotnikthingy.ironsight.api.IronSightAPI;
+import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
+import com.github.robotnikthingy.ironsight.api.bullet.Bullet;
 import com.github.robotnikthingy.ironsight.api.manager.WeaponManager;
 import com.github.robotnikthingy.ironsight.api.mechanic.MechanicParser;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
+import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
+import com.github.robotnikthingy.ironsight.bullet.IronBullet;
 import com.github.robotnikthingy.ironsight.manager.IronWeaponManager;
 import com.github.robotnikthingy.ironsight.mechanic.IronMechanicParser;
 import com.github.robotnikthingy.ironsight.mechanic.data.IronMechanicDataHandler;
@@ -32,6 +38,7 @@ public class IronSightPlugin extends JavaPlugin implements IronSightAPI {
 
     public static final File FOLDER_PLUGIN = IronSightPlugin.getInstance().getDataFolder();
     public static final File FOLDER_WEAPONS = new File(FOLDER_PLUGIN, "/Weapons");
+    public static final File FOLDER_HARDPOINTS = new File(FOLDER_PLUGIN, "/Hardpoints");
     public static final File FOLDER_PROJECTILES = new File(FOLDER_PLUGIN, "/Projectiles");
     public static final File FOLDER_ATTACHMENTS = new File(FOLDER_PLUGIN, "/Attachments");
     public static final File FOLDER_ITEMS = new File(FOLDER_PLUGIN, "/Items");
@@ -83,6 +90,16 @@ public class IronSightPlugin extends JavaPlugin implements IronSightAPI {
     @Override
     public MechanicDataHandler createMechanicDataHandler() {
     	return new IronMechanicDataHandler();
+    }
+    
+    @Override
+    public Bullet createBullet(Weapon weapon, Ammunition ammunition, IronSightPlayer shooter, Location location, Vector initialVelocity) {
+    	return new IronBullet(weapon, ammunition, shooter, location, initialVelocity);
+    }
+    
+    @Override
+    public Bullet createBullet(Weapon weapon, Ammunition ammunition, IronSightPlayer shooter, Location location) {
+    	return new IronBullet(weapon, ammunition, shooter, location);
     }
     
     /**

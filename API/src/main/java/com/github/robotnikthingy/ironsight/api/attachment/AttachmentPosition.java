@@ -1,5 +1,8 @@
 package com.github.robotnikthingy.ironsight.api.attachment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents a position on the gun in which an attachment can be made
  * 
@@ -49,5 +52,22 @@ public enum AttachmentPosition {
 	 * flashlights, etc.)
 	 */
 	UNDERBARREL;
+	
+	/**
+	 * Construct a new Map containing all values of the provided AttachmentPositions
+	 * mapped to null. This is a utility method for implementations of {@link WeaponAttachable}
+	 * 
+	 * @param positions the positions to Map
+	 * @return the null-mapped AttachmentPosition Map
+	 */
+	public static Map<AttachmentPosition, Attachment> newAttachmentMap(AttachmentPosition... positions) {
+		Map<AttachmentPosition, Attachment> map = new HashMap<>();
+		
+		for (AttachmentPosition position : positions) {
+			map.put(position, null);
+		}
+		
+		return map;
+	}
 	
 }
