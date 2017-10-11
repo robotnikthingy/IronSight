@@ -1,16 +1,12 @@
 package com.github.robotnikthingy.ironsight.api.weapon;
 
-import com.github.robotnikthingy.ironsight.api.weapon.state.Reloadable;
-
-import org.bukkit.entity.Player;
-
 /**
  * Represents a weapon capable of being thrown as a projectile.
  * ex: Grenade, Molotov, etc.
  * 
  * @author Parker Hawke - 2008Choco
  */
-public interface WeaponThrowable extends Weapon, Reloadable {
+public interface WeaponThrowable extends WeaponReloadable {
 	
 	/**
 	 * Get the fuse time for this throwable weapon
@@ -26,12 +22,5 @@ public interface WeaponThrowable extends Weapon, Reloadable {
 	 * @return true if activate on impact. false otherwise
 	 */
 	public boolean activateOnImpact();
-	
-	/**
-	 * Launch this weapon and create a throwable entity
-	 * 
-	 * @param player the player that threw the weapon
-	 */
-	public void launch(Player player); // "throw" is a keyword. #FeelsBadMan
 	
 }

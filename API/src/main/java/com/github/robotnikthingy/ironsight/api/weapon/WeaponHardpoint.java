@@ -1,10 +1,9 @@
 package com.github.robotnikthingy.ironsight.api.weapon;
 
-import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
-import com.github.robotnikthingy.ironsight.api.weapon.state.Shootable;
-
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
 
 /**
  * Represents a weapon located at a given {@link Location} in a world.
@@ -15,7 +14,7 @@ import org.bukkit.entity.Player;
  * 
  * @author Parker Hawke - 2008Choco
  */
-public interface WeaponHardpoint extends Weapon, Shootable {
+public interface WeaponHardpoint extends Weapon {
 	
 	/**
 	 * Set the location and relocate the weapon
@@ -34,8 +33,7 @@ public interface WeaponHardpoint extends Weapon, Shootable {
 	/**
 	 * Set the user interacting with this weapon hardpoint
 	 * 
-	 * @param player the new interacting player. null if no user is
-	 * handling the weapon
+	 * @param player the new interacting user. null to set no user
 	 * @return true if successful. false otherwise
 	 */
 	public boolean setUser(IronSightPlayer player);

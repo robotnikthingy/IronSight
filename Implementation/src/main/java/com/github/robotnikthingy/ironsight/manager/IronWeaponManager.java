@@ -6,13 +6,17 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.commons.lang.Validate;
+import org.bukkit.configuration.file.YamlConfiguration;
+
 import com.github.robotnikthingy.ironsight.IronSightPlugin;
 import com.github.robotnikthingy.ironsight.api.manager.WeaponManager;
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
-import com.github.robotnikthingy.ironsight.weapon.ConfigurableWeapon;
+import com.github.robotnikthingy.ironsight.weapon.CustomWeapon;
+import com.github.robotnikthingy.ironsight.weapon.CustomWeaponHardpoint;
+import com.github.robotnikthingy.ironsight.weapon.CustomWeaponItem;
+import com.github.robotnikthingy.ironsight.weapon.CustomWeaponThrowable;
 import com.google.common.collect.ImmutableSet;
-
-import org.apache.commons.lang.Validate;
 
 /**
  * Keeps track of and manages all weapons registered by the plugin
@@ -25,13 +29,15 @@ public class IronWeaponManager implements WeaponManager {
     private final Set<Weapon> weapons = new HashSet<>();
 
     public IronWeaponManager() {
-    	this.loadWeapons(IronSightPlugin.FOLDER_WEAPONS);
+    	this.reloadWeapons();
     }
 
     @Override
     public void reloadWeapons() {
         this.weapons.clear();
         this.loadWeapons(IronSightPlugin.FOLDER_WEAPONS);
+        this.loadWeapons(IronSightPlugin.FOLDER_HARDPOINTS);
+        this.loadWeapons(IronSightPlugin.FOLDER_PROJECTILES);
     }
     
     @Override
@@ -92,13 +98,14 @@ public class IronWeaponManager implements WeaponManager {
      * Scans through all files in a folder and its children. Adds any weapons found to the
      * weapons list defined within {@link WeaponManager}
      * 
+     * @param parentDirectory the parent directory. Generally the same as the directory param
      * @param directory the directory to load weapons from
      */
-	private void loadWeapons(File directory) {
+	private void loadWeapons(File parentDirectory, File directory) {
 		for (File file : directory.listFiles()) {
 			// Scan through subfolder for weapons if its a directory
 			if (file.isDirectory()) {
-				loadWeapons(file);
+				this.loadWeapons(parentDirectory, file);
 			}
 			
 			String extension = "";
@@ -110,8 +117,25 @@ public class IronWeaponManager implements WeaponManager {
 			// It's a config file
 			if (!extension.equals("yml")) continue;
 			
-			weapons.add(new ConfigurableWeapon(file));
+			CustomWeapon weapon = null;
+			if (parentDirectory == IronSightPlugin.FOLDER_WEAPONS) weapon = new CustomWeaponItem();
+			else if (parentDirectory == IronSightPlugin.FOLDER_HARDPOINTS) weapon = new CustomWeaponHardpoint();
+			else if (parentDirectory == IronSightPlugin.FOLDER_PROJECTILES) weapon = new CustomWeaponThrowable();
+			else break;
+			
+			weapon.loadConfigurationOptions(YamlConfiguration.loadConfiguration(file));
+			this.weapons.add(weapon);
 		}
+	}
+	
+    /**
+     * Scans through all files in a folder and its children. Adds any weapons found to the
+     * weapons list defined within {@link WeaponManager}
+     * 
+     * @param directory the directory to load weapons from
+     */
+	private void loadWeapons(File directory) {
+		this.loadWeapons(directory, directory);
 	}
     
 }

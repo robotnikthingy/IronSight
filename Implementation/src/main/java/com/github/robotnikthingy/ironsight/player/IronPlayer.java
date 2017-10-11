@@ -43,10 +43,8 @@ public class IronPlayer implements IronSightPlayer {
 
 	@Override
 	public boolean setActiveHardpoint(WeaponHardpoint hardpoint) {
-		boolean success = this.hardpoint.setUser(this);
-		if (success) this.hardpoint = hardpoint;
-		
-		return success;
+		this.hardpoint = hardpoint;
+		return true;
 	}
 
 	@Override

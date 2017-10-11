@@ -1,9 +1,6 @@
 package com.github.robotnikthingy.ironsight.api.attachment;
 
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
-import com.github.robotnikthingy.ironsight.api.weapon.state.Attachable;
-
-import org.bukkit.entity.Player;
 
 /**
  * Represents a weapon attachment that gives weapons special properties
@@ -43,19 +40,5 @@ public interface Attachment {
 	 * false otherwise
 	 */
 	public boolean isAttachableWith(Attachment attachment);
-	
-	/**
-	 * Attach this attachment to the provided weapon. Any extra effects or
-	 * extraneous features should be implemented in this attach method, though
-	 * the actual attachment of the weapon will be handled by implementation. For
-	 * actions to be fired after the attachment was successful, see
-	 * {@link Attachable#attach(Player, Attachment)}
-	 * 
-	 * @param player the player that attached the attachment
-	 * @param weapon the weapon to attach the attachment to
-	 * 
-	 * @return true if successful. If false, the attachment will fail
-	 */
-	public boolean attach(Player player, Weapon weapon);
 	
 }
