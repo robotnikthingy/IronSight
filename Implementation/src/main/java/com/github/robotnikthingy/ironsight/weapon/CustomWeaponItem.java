@@ -1,5 +1,6 @@
 package com.github.robotnikthingy.ironsight.weapon;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -18,9 +19,7 @@ import com.github.robotnikthingy.ironsight.api.weapon.WeaponItem;
 import com.google.common.collect.ImmutableMap;
 
 public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttachable {
-	
-	private MechanicDataHandler reloadHandler = IronSight.createMechanicDataHandler();
-	private MechanicDataHandler shootingHandler = IronSight.createMechanicDataHandler();
+
 	private MechanicDataHandler selectionHandler = IronSight.createMechanicDataHandler();
 	
 	private ItemStack item;
@@ -28,52 +27,15 @@ public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttacha
 	private Map<AttachmentPosition, Attachment> attachments;
 	
 	private String name;
-	private int clipSize, maxAmmo, ammo = 0;
-	private double damage;
 
-	@Override
-	public int getClipSize() {
-		return clipSize;
-	}
-
-	@Override
-	public int getMaxAmmo() {
-		return maxAmmo;
-	}
-
-	@Override
-	public int getAmmo() {
-		return ammo;
-	}
-
-	@Override
-	public MechanicDataHandler getReloadDataHandler() {
-		return reloadHandler;
-	}
-
-	@Override
-	public void reload(Player player, Ammunition ammo) {
-		int ammoCount = IronSight.getPlayer(player).getRemainingAmmunition(ammo);
-		int requiredAmmo = getClipSize() - this.ammo;
-		
-		int toReload = Math.min(requiredAmmo, Math.min(ammoCount, getClipSize()));
-		this.ammo += toReload;
-		
-		// Remove item from inventory
-		ItemStack item = ammo.getItem();
-		item.setAmount(toReload);
-		player.getInventory().removeItem(item);
-	}
+	private ArrayList<CustomWeaponLoadout> loadouts = new ArrayList<CustomWeaponLoadout>();
+	private CustomWeaponLoadout currentLoadout;
 
 	@Override
 	public String getName() {
 		return name;
 	}
 
-	@Override
-	public double getDamage() {
-		return damage;
-	}
 
 	@Override
 	public ItemStack getItem() {
@@ -81,32 +43,32 @@ public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttacha
 	}
 
 	@Override
-	public MechanicDataHandler getShootingDataHandler() {
-		return shootingHandler;
-	}
-
-	@Override
-	public void shoot(Player player) {
-		this.ammo--;
-	}
-
-	@Override
 	public Weapon newInstance() {
 		CustomWeaponItem weapon = new CustomWeaponItem();
-		
-		weapon.reloadHandler = reloadHandler;
-		weapon.shootingHandler = shootingHandler;
+		weapon.loadouts = loadouts;
 		weapon.selectionHandler = selectionHandler;
 		
 		weapon.item = item;
 		weapon.supportedPositions = supportedPositions;
 		
 		weapon.name = name;
-		weapon.clipSize = clipSize;
-		weapon.maxAmmo = maxAmmo;
-		weapon.damage = damage;
-		
+
+		//default to first loadout
+		weapon.currentLoadout = loadouts.get(0);
+
 		return weapon;
+	}
+
+	public CustomWeaponLoadout getCurrentLoadout(){
+		return currentLoadout;
+	}
+
+	public ArrayList<CustomWeaponLoadout> getLoadouts(){
+		return loadouts;
+	}
+
+	public void setCurrentLoadout(CustomWeaponLoadout loadout){
+		currentLoadout = loadout;
 	}
 
 	@Override
@@ -178,12 +140,13 @@ public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttacha
 	@Override
 	public int hashCode() {
 		int prime = 31;
-		long dmgBits = Double.doubleToLongBits(damage);
+
+		//Since damage is attached to loadouts, maybe add up total damage of all loadouts?
+		//long dmgBits = Double.doubleToLongBits(damage);
 		
-		int result = prime + clipSize;
-		result = prime * result + (int) (dmgBits ^ (dmgBits >>> 32));
+		int result = prime;
+		//result = prime * result + (int) (dmgBits ^ (dmgBits >>> 32));
 		result = prime * result + ((item == null) ? 0 : item.hashCode());
-		result = prime * result + maxAmmo;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + Arrays.hashCode(supportedPositions);
 		
