@@ -1,20 +1,23 @@
 package com.github.robotnikthingy.ironsight.weapon;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
 import com.github.robotnikthingy.ironsight.api.IronSight;
-import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
 import com.github.robotnikthingy.ironsight.api.attachment.Attachment;
 import com.github.robotnikthingy.ironsight.api.attachment.AttachmentPosition;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
 import com.github.robotnikthingy.ironsight.api.weapon.WeaponAttachable;
 import com.github.robotnikthingy.ironsight.api.weapon.WeaponItem;
+import com.github.robotnikthingy.ironsight.api.weapon.WeaponLoadout;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * This is an example implementation of {@link Weapon}, AK-47.
@@ -34,47 +37,12 @@ public class AK47 implements WeaponItem, WeaponAttachable {
 		AttachmentPosition.STOCK,
 	};
 	
-	private final MechanicDataHandler reloadHandler = IronSight.createMechanicDataHandler();
-	private final MechanicDataHandler shootingHandler = IronSight.createMechanicDataHandler();
 	private final MechanicDataHandler selectionHandler = IronSight.createMechanicDataHandler();
 	
+	private final List<WeaponLoadout> loadouts = new ArrayList<>();
 	private final Map<AttachmentPosition, Attachment> attachments = AttachmentPosition.newAttachmentMap(SUPPORTED_POSITIONS);
 	
-	private int ammo = 0;
-
-	@Override
-	public int getClipSize() {
-		return 30;
-	}
-
-	@Override
-	public int getMaxAmmo() {
-		return 180;
-	}
-
-	@Override
-	public int getAmmo() {
-		return ammo;
-	}
-
-	@Override
-	public MechanicDataHandler getReloadDataHandler() {
-		return reloadHandler;
-	}
-
-	@Override
-	public void reload(Player player, Ammunition ammo) {
-		int ammoCount = IronSight.getPlayer(player).getRemainingAmmunition(ammo);
-		int requiredAmmo = getClipSize() - this.ammo;
-		
-		int toReload = Math.min(requiredAmmo, Math.min(ammoCount, getClipSize()));
-		this.ammo += toReload;
-		
-		// Remove item from inventory
-		ItemStack item = ammo.getItem();
-		item.setAmount(toReload);
-		player.getInventory().removeItem(item);
-	}
+	private WeaponLoadout currentLoadout;
 
 	@Override
 	public String getName() {
@@ -82,23 +50,23 @@ public class AK47 implements WeaponItem, WeaponAttachable {
 	}
 
 	@Override
-	public double getDamage() {
-		return 2.5;
-	}
-
-	@Override
 	public ItemStack getItem() {
 		return ITEM;
 	}
-
+	
 	@Override
-	public MechanicDataHandler getShootingDataHandler() {
-		return shootingHandler;
+	public void setLoadout(WeaponLoadout loadout) {
+		this.currentLoadout = loadout;
 	}
 
 	@Override
-	public void shoot(Player player) {
-		this.ammo--;
+	public WeaponLoadout getLoadout() {
+		return currentLoadout;
+	}
+
+	@Override
+	public Collection<WeaponLoadout> getLoadouts() {
+		return ImmutableList.copyOf(loadouts);
 	}
 
 	@Override

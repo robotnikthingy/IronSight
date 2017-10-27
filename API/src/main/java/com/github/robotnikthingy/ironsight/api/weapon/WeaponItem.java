@@ -7,7 +7,7 @@ import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler
  * 
  * @author Parker Hawke - 2008Choco
  */
-public interface WeaponItem extends WeaponReloadable {
+public interface WeaponItem {
 	
 	/**
 	 * Get the selection-related mechanic data handler

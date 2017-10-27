@@ -6,7 +6,7 @@ package com.github.robotnikthingy.ironsight.api.weapon;
  * 
  * @author Parker Hawke - 2008Choco
  */
-public interface WeaponThrowable extends WeaponReloadable {
+public interface WeaponThrowable {
 	
 	/**
 	 * Get the fuse time for this throwable weapon

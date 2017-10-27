@@ -2,8 +2,23 @@ package com.github.robotnikthingy.ironsight.api.weapon;
 
 import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
+
 import org.bukkit.entity.Player;
 
+/**
+ * Represent a {@link Weapon}'s "state". May be considered as a sub-classification.
+ * <p>
+ * Damage, accuracy, ammunition, etc. are related to a weapon's loadouts. All weapons have 9 loadouts
+ * (due to the limitation given 9 slots in the player's hotbar). This system allows users to switch
+ * between different types of ammunition (armour piercing, incendiary, HEAT, etc.) or different
+ * attachments (underbarrel grenade launcher, underbarrel shotgun, etc.) by attaching the weapon's
+ * various properties and ammunition to it's loadout rather than the weapon itself.
+ * <p>
+ * By default, each weapon will have one loadout which usually represents the unmodified weapon itself. 
+ * Any additional loadouts are optional
+ * 
+ * @author Robotnik
+ */
 public interface WeaponLoadout {
 
     /**

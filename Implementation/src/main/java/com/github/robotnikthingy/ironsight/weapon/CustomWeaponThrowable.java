@@ -1,14 +1,18 @@
 package com.github.robotnikthingy.ironsight.weapon;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import com.github.robotnikthingy.ironsight.api.IronSight;
-import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
+import com.github.robotnikthingy.ironsight.api.weapon.WeaponLoadout;
 import com.github.robotnikthingy.ironsight.api.weapon.WeaponThrowable;
+import com.google.common.collect.ImmutableList;
+
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 public class CustomWeaponThrowable implements CustomWeapon, WeaponThrowable {
 	
@@ -17,45 +21,14 @@ public class CustomWeaponThrowable implements CustomWeapon, WeaponThrowable {
 	
 	private ItemStack item;
 	private String name;
-	private int clipSize, maxAmmo, ammo = 0;
+	private int clipSize, maxAmmo = 0;
 	private double damage;
 	
 	private int fuse;
 	private boolean activateOnImpact;
-
-	@Override
-	public int getClipSize() {
-		return clipSize;
-	}
-
-	@Override
-	public int getMaxAmmo() {
-		return maxAmmo;
-	}
-
-	@Override
-	public int getAmmo() {
-		return ammo;
-	}
-
-	@Override
-	public MechanicDataHandler getReloadDataHandler() {
-		return reloadHandler;
-	}
-
-	@Override
-	public void reload(Player player, Ammunition ammo) {
-		int ammoCount = IronSight.getPlayer(player).getRemainingAmmunition(ammo);
-		int requiredAmmo = getClipSize() - this.ammo;
-		
-		int toReload = Math.min(requiredAmmo, Math.min(ammoCount, getClipSize()));
-		this.ammo += toReload;
-		
-		// Remove item from inventory
-		ItemStack item = ammo.getItem();
-		item.setAmount(toReload);
-		player.getInventory().removeItem(item);
-	}
+	
+	private WeaponLoadout currentLoadout;
+	private List<WeaponLoadout> loadouts = new ArrayList<>();
 
 	@Override
 	public String getName() {
@@ -63,23 +36,23 @@ public class CustomWeaponThrowable implements CustomWeapon, WeaponThrowable {
 	}
 
 	@Override
-	public double getDamage() {
-		return damage;
-	}
-
-	@Override
 	public ItemStack getItem() {
 		return item;
 	}
-
+	
 	@Override
-	public MechanicDataHandler getShootingDataHandler() {
-		return shootingHandler;
+	public void setLoadout(WeaponLoadout loadout) {
+		this.currentLoadout = loadout;
 	}
 
 	@Override
-	public void shoot(Player player) {
-		this.ammo--;
+	public WeaponLoadout getLoadout() {
+		return currentLoadout;
+	}
+
+	@Override
+	public Collection<WeaponLoadout> getLoadouts() {
+		return ImmutableList.copyOf(loadouts);
 	}
 
 	@Override
@@ -97,6 +70,9 @@ public class CustomWeaponThrowable implements CustomWeapon, WeaponThrowable {
 		
 		weapon.fuse = fuse;
 		weapon.activateOnImpact = activateOnImpact;
+		
+		weapon.currentLoadout = currentLoadout;
+		weapon.loadouts = loadouts;
 		
 		return weapon;
 	}

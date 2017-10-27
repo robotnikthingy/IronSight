@@ -2,21 +2,23 @@ package com.github.robotnikthingy.ironsight.weapon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
 import com.github.robotnikthingy.ironsight.api.IronSight;
-import com.github.robotnikthingy.ironsight.api.ammo.Ammunition;
 import com.github.robotnikthingy.ironsight.api.attachment.Attachment;
 import com.github.robotnikthingy.ironsight.api.attachment.AttachmentPosition;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
 import com.github.robotnikthingy.ironsight.api.weapon.WeaponAttachable;
 import com.github.robotnikthingy.ironsight.api.weapon.WeaponItem;
+import com.github.robotnikthingy.ironsight.api.weapon.WeaponLoadout;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttachable {
 
@@ -28,8 +30,8 @@ public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttacha
 	
 	private String name;
 
-	private ArrayList<CustomWeaponLoadout> loadouts = new ArrayList<CustomWeaponLoadout>();
-	private CustomWeaponLoadout currentLoadout;
+	private List<CustomWeaponLoadout> loadouts = new ArrayList<>();
+	private WeaponLoadout currentLoadout;
 
 	@Override
 	public String getName() {
@@ -58,17 +60,20 @@ public class CustomWeaponItem implements CustomWeapon, WeaponItem, WeaponAttacha
 
 		return weapon;
 	}
+	
+	@Override
+	public void setLoadout(WeaponLoadout loadout) {
+		this.currentLoadout = loadout;
+	}
 
-	public CustomWeaponLoadout getCurrentLoadout(){
+	@Override
+	public WeaponLoadout getLoadout() {
 		return currentLoadout;
 	}
 
-	public ArrayList<CustomWeaponLoadout> getLoadouts(){
-		return loadouts;
-	}
-
-	public void setCurrentLoadout(CustomWeaponLoadout loadout){
-		currentLoadout = loadout;
+	@Override
+	public Collection<WeaponLoadout> getLoadouts() {
+		return ImmutableList.copyOf(loadouts);
 	}
 
 	@Override

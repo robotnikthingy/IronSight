@@ -1,9 +1,8 @@
 package com.github.robotnikthingy.ironsight.api.ammo;
 
-import org.bukkit.inventory.ItemStack;
-
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
-import com.github.robotnikthingy.ironsight.api.weapon.WeaponReloadable;
+
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Represents a piece of ammunition as an item. Ammunition may be used

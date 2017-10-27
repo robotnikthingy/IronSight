@@ -1,11 +1,8 @@
 package com.github.robotnikthingy.ironsight.api.weapon;
 
-import org.bukkit.entity.Player;
+import java.util.Collection;
+
 import org.bukkit.inventory.ItemStack;
-
-import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
-
-import java.util.ArrayList;
 
 /**
  * Represents a basic weapon without any state
@@ -28,20 +25,34 @@ public interface Weapon {
 	 * @return the representing item. null if none
 	 */
 	public ItemStack getItem();
+	
+	/**
+	 * Set a new weapon loadout to be active on this weapon
+	 * 
+	 * @param loadout the new active loadout to set
+	 * 
+	 * @author Robotnik
+	 */
+	public void setLoadout(WeaponLoadout loadout);
 
 	/**
 	 * Get the current weapon loadout
 	 *
-	 * @return the representing loadout. null if none
+	 * @return the active loadout. null if none
+	 * 
+	 * @author Robotnik
 	 */
 	public WeaponLoadout getLoadout();
 
 	/**
-	 * Get an ArrayList of all weapon loadouts, if the weapon has more than one
+	 * Get a collection of all weapon loadouts
 	 *
-	 * @return ArrayList of all weapon loadouts. empty ArrayList if none.
+	 * @return all weapon loadouts. Returned collection will be empty if no
+	 * loadouts are available
+	 * 
+	 * @author Robotnik
 	 */
-	public ArrayList<WeaponLoadout> getLoadoutOuts();
+	public Collection<WeaponLoadout> getLoadouts();
 	
 	/**
 	 * Construct a new instance of this weapon implementation

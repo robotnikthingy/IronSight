@@ -1,15 +1,20 @@
 package com.github.robotnikthingy.ironsight.weapon;
 
-import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import com.github.robotnikthingy.ironsight.api.IronSight;
 import com.github.robotnikthingy.ironsight.api.mechanic.data.MechanicDataHandler;
 import com.github.robotnikthingy.ironsight.api.player.IronSightPlayer;
 import com.github.robotnikthingy.ironsight.api.weapon.Weapon;
 import com.github.robotnikthingy.ironsight.api.weapon.WeaponHardpoint;
+import com.github.robotnikthingy.ironsight.api.weapon.WeaponLoadout;
+import com.google.common.collect.ImmutableList;
+
+import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 public class CustomWeaponHardpoint implements CustomWeapon, WeaponHardpoint {
 	
@@ -22,6 +27,9 @@ public class CustomWeaponHardpoint implements CustomWeapon, WeaponHardpoint {
 	private String name;
 	private double damage;
 	private boolean redstoneActivate;
+	
+	private WeaponLoadout currentLoadout;
+	private List<WeaponLoadout> loadouts = new ArrayList<>();
 
 	@Override
 	public String getName() {
@@ -29,22 +37,24 @@ public class CustomWeaponHardpoint implements CustomWeapon, WeaponHardpoint {
 	}
 
 	@Override
-	public double getDamage() {
-		return damage;
-	}
-
-	@Override
 	public ItemStack getItem() {
 		return item;
 	}
-
+	
 	@Override
-	public MechanicDataHandler getShootingDataHandler() {
-		return shootingHandler;
+	public void setLoadout(WeaponLoadout loadout) {
+		this.currentLoadout = loadout;
 	}
 
 	@Override
-	public void shoot(Player player) {}
+	public WeaponLoadout getLoadout() {
+		return currentLoadout;
+	}
+
+	@Override
+	public Collection<WeaponLoadout> getLoadouts() {
+		return ImmutableList.copyOf(loadouts);
+	}
 
 	@Override
 	public Weapon newInstance() {
@@ -57,6 +67,9 @@ public class CustomWeaponHardpoint implements CustomWeapon, WeaponHardpoint {
 		weapon.damage = damage;
 		
 		weapon.redstoneActivate = redstoneActivate;
+		
+		weapon.currentLoadout = currentLoadout;
+		weapon.loadouts = loadouts;
 		
 		return weapon;
 	}
